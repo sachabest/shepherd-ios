@@ -15,7 +15,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
-
+    var currentUser: PFUser? = nil
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,13 +39,25 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
         
-        var logInController = PFLogInViewController()
-        logInController.delegate = self
-//        self.navigationController.presentViewController(logInController, animated:true, completion: nil)
-        self.navigationController?.pushViewController(logInController, animated: true)
+        //        self.navigationController?.pushViewController(logInController, animated: true)
         
     }
 
+    override func viewDidAppear(animated: Bool) {
+        self.currentUser = PFUser.currentUser()
+        if self.currentUser != nil {
+            
+        } else {
+            var logInController = PFLogInViewController()
+            logInController.delegate = self
+            logInController.fields = (PFLogInFields.UsernameAndPassword
+                | PFLogInFields.LogInButton
+                | PFLogInFields.SignUpButton
+                | PFLogInFields.PasswordForgotten)
+            self.presentViewController(logInController, animated:animated, completion: nil)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -213,9 +225,10 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
 
 extension MasterViewController : PFLogInViewControllerDelegate {
-    
-    func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
+    func logInViewController(controller: PFLogInViewController, didLogInUser user: PFUser!) -> Void {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
+    func logInViewControllerDidCancelLogIn(controller: PFLogInViewController) -> Void {
+        // NOOP
+    }
 }
