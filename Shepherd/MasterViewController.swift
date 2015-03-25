@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import Parse
+
 
 class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
@@ -21,6 +23,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             self.clearsSelectionOnViewWillAppear = false
             self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
         }
+        
+        
     }
 
     override func viewDidLoad() {
@@ -34,6 +38,12 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
+        
+        var logInController = PFLogInViewController()
+        logInController.delegate = self
+//        self.navigationController.presentViewController(logInController, animated:true, completion: nil)
+        self.navigationController?.pushViewController(logInController, animated: true)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -201,3 +211,11 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
 }
 
+
+extension MasterViewController : PFLogInViewControllerDelegate {
+    
+    func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+}

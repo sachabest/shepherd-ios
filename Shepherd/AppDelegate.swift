@@ -1,4 +1,4 @@
-//
+    //
 //  AppDelegate.swift
 //  Shepherd
 //
@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Parse
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
@@ -32,7 +33,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         PFAnalytics.trackAppOpenedWithLaunchOptionsInBackground(launchOptions, block: nil)
         
         print("launched")
-
+        
+        let userNotificationTypes = (UIUserNotificationType.Alert |
+            UIUserNotificationType.Badge |
+            UIUserNotificationType.Sound);
+        
+        let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
+        
         return true
     }
 
