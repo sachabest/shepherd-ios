@@ -232,6 +232,13 @@ extension ChiefComplaintViewController : PFLogInViewControllerDelegate {
     func logInViewControllerDidCancelLogIn(controller: PFLogInViewController) -> Void {
         // NOOP
     }
+    func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) -> Void {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func signUpViewControllerDidCancelSignUp(signUpController: PFSignUpViewController) -> Void {
+        // NOOP
+    }
 }
 
 extension ChiefComplaintViewController: PFSignUpViewControllerDelegate{
