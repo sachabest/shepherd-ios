@@ -82,7 +82,13 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "showDetail" {
+        print("hi")
+        if segue.identifier == "show" {
+            if let indexPath = self.tableView.indexPathForSelectedRow(){
+                let object = self.objectAtIndexPath(indexPath) as PFObject?
+                let controller = (segue.destinationViewController as UINavigationController).topViewController as DiagnosisQuestionViewController
+                controller.detailItem = object
+            }
 //            if let indexPath = self.tableView.indexPathForSelectedRow() {
 //            let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
 //                let controller = (segue.destinationViewController as UINavigationController).topViewController as DiagnosisQuestionViewController
@@ -90,11 +96,7 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
 //                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
 //                controller.navigationItem.leftItemsSupplementBackButton = true
 //            }
-//        }
-    }
-
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        self.tableView.endUpdates()
+        }
     }
 }
 
