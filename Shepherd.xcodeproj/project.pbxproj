@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		1620AEC21AC22CA9006F6AAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620AEC11AC22CA9006F6AAE /* AppDelegate.swift */; };
 		1620AEC51AC22CA9006F6AAE /* Shepherd.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1620AEC31AC22CA9006F6AAE /* Shepherd.xcdatamodeld */; };
-		1620AEC71AC22CA9006F6AAE /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620AEC61AC22CA9006F6AAE /* MasterViewController.swift */; };
-		1620AEC91AC22CA9006F6AAE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620AEC81AC22CA9006F6AAE /* DetailViewController.swift */; };
+		1620AEC71AC22CA9006F6AAE /* ChiefComplaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620AEC61AC22CA9006F6AAE /* ChiefComplaintViewController.swift */; };
+		1620AEC91AC22CA9006F6AAE /* DiagnosisQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620AEC81AC22CA9006F6AAE /* DiagnosisQuestionViewController.swift */; };
 		1620AECC1AC22CA9006F6AAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1620AECA1AC22CA9006F6AAE /* Main.storyboard */; };
 		1620AECE1AC22CA9006F6AAE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1620AECD1AC22CA9006F6AAE /* Images.xcassets */; };
 		1620AED11AC22CA9006F6AAE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1620AECF1AC22CA9006F6AAE /* LaunchScreen.xib */; };
@@ -34,8 +34,8 @@
 		1620AEC01AC22CA9006F6AAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1620AEC11AC22CA9006F6AAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1620AEC41AC22CA9006F6AAE /* Shepherd.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shepherd.xcdatamodel; sourceTree = "<group>"; };
-		1620AEC61AC22CA9006F6AAE /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		1620AEC81AC22CA9006F6AAE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1620AEC61AC22CA9006F6AAE /* ChiefComplaintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChiefComplaintViewController.swift; sourceTree = "<group>"; };
+		1620AEC81AC22CA9006F6AAE /* DiagnosisQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosisQuestionViewController.swift; sourceTree = "<group>"; };
 		1620AECB1AC22CA9006F6AAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1620AECD1AC22CA9006F6AAE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1620AED01AC22CA9006F6AAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -91,8 +91,8 @@
 			isa = PBXGroup;
 			children = (
 				1620AEC11AC22CA9006F6AAE /* AppDelegate.swift */,
-				1620AEC61AC22CA9006F6AAE /* MasterViewController.swift */,
-				1620AEC81AC22CA9006F6AAE /* DetailViewController.swift */,
+				1620AEC61AC22CA9006F6AAE /* ChiefComplaintViewController.swift */,
+				1620AEC81AC22CA9006F6AAE /* DiagnosisQuestionViewController.swift */,
 				1620AECA1AC22CA9006F6AAE /* Main.storyboard */,
 				1620AECD1AC22CA9006F6AAE /* Images.xcassets */,
 				1620AECF1AC22CA9006F6AAE /* LaunchScreen.xib */,
@@ -281,8 +281,8 @@
 			files = (
 				1620AEC51AC22CA9006F6AAE /* Shepherd.xcdatamodeld in Sources */,
 				1620AEC21AC22CA9006F6AAE /* AppDelegate.swift in Sources */,
-				1620AEC71AC22CA9006F6AAE /* MasterViewController.swift in Sources */,
-				1620AEC91AC22CA9006F6AAE /* DetailViewController.swift in Sources */,
+				1620AEC71AC22CA9006F6AAE /* ChiefComplaintViewController.swift in Sources */,
+				1620AEC91AC22CA9006F6AAE /* DiagnosisQuestionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
