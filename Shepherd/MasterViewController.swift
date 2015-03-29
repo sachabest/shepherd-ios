@@ -11,9 +11,9 @@ import CoreData
 import Parse
 
 
-class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class ChiefComplaintViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
-    var detailViewController: DetailViewController? = nil
+    var detailViewController: DiagnosisQuestionViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
     var currentUser: PFUser? = nil
 
@@ -36,7 +36,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
             let controllers = split.viewControllers
-            self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
+            self.detailViewController = controllers[controllers.count-1].topViewController as? DiagnosisQuestionViewController
         }
         
         //        self.navigationController?.pushViewController(logInController, animated: true)
@@ -88,7 +88,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
             let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
-                let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
+                let controller = (segue.destinationViewController as UINavigationController).topViewController as DiagnosisQuestionViewController
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
@@ -224,7 +224,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 }
 
 
-extension MasterViewController : PFLogInViewControllerDelegate {
+extension ChiefComplaintViewController : PFLogInViewControllerDelegate {
     func logInViewController(controller: PFLogInViewController, didLogInUser user: PFUser!) -> Void {
         dismissViewControllerAnimated(true, completion: nil)
     }
