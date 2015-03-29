@@ -50,6 +50,7 @@ class ChiefComplaintViewController: UITableViewController, NSFetchedResultsContr
         } else {
             var logInController = PFLogInViewController()
             logInController.delegate = self
+            logInController.signUpController.delegate = self
             logInController.fields = (PFLogInFields.UsernameAndPassword
                 | PFLogInFields.LogInButton
                 | PFLogInFields.SignUpButton
@@ -229,6 +230,16 @@ extension ChiefComplaintViewController : PFLogInViewControllerDelegate {
         dismissViewControllerAnimated(true, completion: nil)
     }
     func logInViewControllerDidCancelLogIn(controller: PFLogInViewController) -> Void {
+        // NOOP
+    }
+}
+
+extension ChiefComplaintViewController: PFSignUpViewControllerDelegate{
+    func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) -> Void {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func signUpViewControllerDidCancelSignUp(signUpController: PFSignUpViewController) -> Void {
         // NOOP
     }
 }
