@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161AE3321AC8D4B80006D634 /* TestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161AE3311AC8D4B80006D634 /* TestsViewController.swift */; };
+		161AE3341AC8D52C0006D634 /* DiagnosisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161AE3331AC8D52C0006D634 /* DiagnosisViewController.swift */; };
 		1620AEC21AC22CA9006F6AAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620AEC11AC22CA9006F6AAE /* AppDelegate.swift */; };
 		1620AEC51AC22CA9006F6AAE /* Shepherd.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1620AEC31AC22CA9006F6AAE /* Shepherd.xcdatamodeld */; };
 		1620AEC71AC22CA9006F6AAE /* ChiefComplaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620AEC61AC22CA9006F6AAE /* ChiefComplaintViewController.swift */; };
@@ -30,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		1617E4A01AC255EE00AB002B /* Shepherd-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Shepherd-Bridging-Header.h"; sourceTree = "<group>"; };
+		161AE3311AC8D4B80006D634 /* TestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsViewController.swift; sourceTree = "<group>"; };
+		161AE3331AC8D52C0006D634 /* DiagnosisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagnosisViewController.swift; sourceTree = "<group>"; };
 		1620AEBC1AC22CA9006F6AAE /* Shepherd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shepherd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1620AEC01AC22CA9006F6AAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1620AEC11AC22CA9006F6AAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 				1620AECF1AC22CA9006F6AAE /* LaunchScreen.xib */,
 				1620AEC31AC22CA9006F6AAE /* Shepherd.xcdatamodeld */,
 				1620AEBF1AC22CA9006F6AAE /* Supporting Files */,
+				161AE3311AC8D4B80006D634 /* TestsViewController.swift */,
+				161AE3331AC8D52C0006D634 /* DiagnosisViewController.swift */,
 			);
 			path = Shepherd;
 			sourceTree = "<group>";
@@ -281,6 +287,8 @@
 			files = (
 				1620AEC51AC22CA9006F6AAE /* Shepherd.xcdatamodeld in Sources */,
 				1620AEC21AC22CA9006F6AAE /* AppDelegate.swift in Sources */,
+				161AE3341AC8D52C0006D634 /* DiagnosisViewController.swift in Sources */,
+				161AE3321AC8D4B80006D634 /* TestsViewController.swift in Sources */,
 				1620AEC71AC22CA9006F6AAE /* ChiefComplaintViewController.swift in Sources */,
 				1620AEC91AC22CA9006F6AAE /* DiagnosisQuestionViewController.swift in Sources */,
 			);

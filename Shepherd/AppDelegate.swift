@@ -12,21 +12,24 @@ import Parse
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate {
 
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        let masterNavigationController = self.window!.rootViewController as UINavigationController
-//        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as UINavigationController
-//        navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
-        masterNavigationController.delegate = self
+        let tabBarController = self.window!.rootViewController as UITabBarController
+        tabBarController.delegate = self
+        
+        let firstNavigationController = tabBarController.viewControllers!.first as UINavigationController
+        firstNavigationController.delegate = self
+        
+//        let masterNavigationController = self.window!.rootViewController as UINavigationController
+//        masterNavigationController.delegate = self
 
-//        let masterNavigationController = splitViewController.viewControllers[0] as UINavigationController
-        let controller = masterNavigationController.topViewController as ChiefComplaintViewController
-        controller.managedObjectContext = self.managedObjectContext
+//        let controller = masterNavigationController.topViewController as ChiefComplaintViewController
+//        controller.managedObjectContext = self.managedObjectContext
         
         Parse.enableLocalDatastore()
         Parse.setApplicationId("sC51qbtpTGmAuGNXHEQO61uvIYEoC7XClyIuIOb7", clientKey: "6XbLtHBOgarLeMI7ISWqjBqZfBno6lffUsMxJklP")
