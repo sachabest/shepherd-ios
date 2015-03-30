@@ -23,12 +23,20 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
             self.clearsSelectionOnViewWillAppear = false
             self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
         }
-        self.parseClassName = "Complaint"
-        self.pullToRefreshEnabled = true
-        self.paginationEnabled = false
-        
+    }
+    
+    override init!(style: UITableViewStyle, className: String!) {
+        super.init(style: style, className: className)
     }
 
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.parseClassName = "Complaint"
+        self.textKey = "Name"
+        self.pullToRefreshEnabled = true
+        self.paginationEnabled = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -59,23 +67,21 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
 
     override func queryForTable() -> PFQuery! {
         var query = PFQuery(className: self.parseClassName)
-//        if(self.objects.count == 0){
-//            query.cachePolicy = PFQuery
-//        }
-        query.orderByAscending("Name")
+
+        query.orderByAscending(self.textKey)
         return query
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!, object: PFObject!) -> PFTableViewCell! {
-        var cellId = "cell"
-        
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as PFTableViewCell?
+        var cellId = "Cell"
+    
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as PFTableViewCell!
         if(cell == nil){
             cell = PFTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
         
-        cell?.textLabel?.text = object["Name"] as NSString
-        
+        cell?.textLabel?.text = object[self.textKey] as String!
+
         return cell
     }
     
@@ -89,13 +95,6 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
                 let controller = (segue.destinationViewController as UINavigationController).topViewController as DiagnosisQuestionViewController
                 controller.detailItem = object
             }
-//            if let indexPath = self.tableView.indexPathForSelectedRow() {
-//            let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
-//                let controller = (segue.destinationViewController as UINavigationController).topViewController as DiagnosisQuestionViewController
-//                controller.detailItem = object
-//                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-//                controller.navigationItem.leftItemsSupplementBackButton = true
-//            }
         }
     }
 }
