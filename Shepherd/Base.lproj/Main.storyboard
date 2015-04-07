@@ -18,6 +18,7 @@
                     <connections>
                         <segue destination="RMx-3f-FxP" kind="relationship" relationship="viewControllers" id="ykK-hB-HOg"/>
                         <segue destination="xfY-kH-Rc7" kind="relationship" relationship="viewControllers" id="bq3-OM-1DN"/>
+                        <segue destination="lOE-cQ-Kae" kind="relationship" relationship="viewControllers" id="KNJ-NZ-yul"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zex-9I-ngZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -55,7 +56,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJu-MR-Ww5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1447" y="-1589"/>
+            <point key="canvasLocation" x="709" y="-1589"/>
         </scene>
         <!--Diagnoses-->
         <scene sceneID="CzL-37-auV">
@@ -103,7 +104,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2159" y="-1295"/>
+            <point key="canvasLocation" x="1423" y="-1589"/>
         </scene>
         <!--Tests-->
         <scene sceneID="WAZ-0B-1yX">
@@ -134,6 +135,7 @@
                             <outlet property="delegate" destination="4H9-0j-VGk" id="H46-KH-DZq"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Tests" id="pVA-HQ-iPp"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="Tmd-pe-DWm" id="4ss-H0-Aja"/>
                     </connections>
@@ -149,7 +151,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2159" y="-455"/>
+            <point key="canvasLocation" x="2159" y="-379"/>
         </scene>
         <!--Detail-->
         <scene sceneID="yUG-lL-AsK">
@@ -218,6 +220,23 @@
             </objects>
             <point key="canvasLocation" x="1447" y="-619"/>
         </scene>
+        <!--Tests-->
+        <scene sceneID="lIa-3f-kPa">
+            <objects>
+                <navigationController id="lOE-cQ-Kae" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Tests" image="syringe" id="V94-aE-FhA"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="79v-lf-6V7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="4H9-0j-VGk" kind="relationship" relationship="rootViewController" id="jgs-wP-J4Y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tdg-ok-U9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2159" y="-1171"/>
+        </scene>
         <!--Master-->
         <scene sceneID="smW-Zh-WAh">
             <objects>
@@ -285,8 +304,10 @@
     <resources>
         <image name="caduceus" width="25" height="25"/>
         <image name="stethoscope" width="25" height="25"/>
+        <image name="syringe" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Jq8-rI-Tbx"/>
+        <segue reference="jgs-wP-J4Y"/>
     </inferredMetricsTieBreakers>
 </document>
