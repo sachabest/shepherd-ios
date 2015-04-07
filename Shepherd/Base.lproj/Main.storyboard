@@ -9,7 +9,7 @@
         <scene sceneID="Yj3-nj-YSk">
             <objects>
                 <tabBarController id="xV6-oa-h14" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="XSw-79-8yD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -55,7 +55,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gJu-MR-Ww5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2175" y="-1707"/>
+            <point key="canvasLocation" x="1447" y="-1589"/>
         </scene>
         <!--Diagnoses-->
         <scene sceneID="CzL-37-auV">
@@ -103,7 +103,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2175" y="-967"/>
+            <point key="canvasLocation" x="2159" y="-1295"/>
         </scene>
         <!--Tests-->
         <scene sceneID="WAZ-0B-1yX">
@@ -149,7 +149,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2170" y="-239"/>
+            <point key="canvasLocation" x="2159" y="-455"/>
         </scene>
         <!--Detail-->
         <scene sceneID="yUG-lL-AsK">
@@ -287,6 +287,6 @@
         <image name="stethoscope" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hsz-FV-E9J"/>
+        <segue reference="Jq8-rI-Tbx"/>
     </inferredMetricsTieBreakers>
 </document>

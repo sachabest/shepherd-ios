@@ -9,7 +9,7 @@
 import Parse
 
 
-class ChiefComplaintViewController: PFQueryTableViewController, UISearchDisplayDelegate  {
+class ChiefComplaintViewController: PFQueryTableViewController  {
     var currentUser: PFUser? = nil
     var searchTerm: String!
 
@@ -112,9 +112,12 @@ extension ChiefComplaintViewController: PFSignUpViewControllerDelegate{
 }
 
 extension ChiefComplaintViewController: UISearchBarDelegate{
-    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
-        self.searchTerm = searchString
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
+        self.searchTerm = searchText
         self.loadObjects()
-        return true
+    }
+    func searchBarTextDidEndEditing(searchBar: UISearchBar){
+        self.searchTerm = nil
+        self.loadObjects()
     }
 }
