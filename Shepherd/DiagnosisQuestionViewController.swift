@@ -40,6 +40,9 @@ class DiagnosisQuestionViewController: UIViewController {
         if segue.identifier == "yesDiagnosis"{
             var diagnosisViewController : DiagnosisViewController = segue.destinationViewController as DiagnosisViewController
             diagnosisViewController.complaint = self.detailItem as PFObject?
+        }else if segue.identifier == "noDiagnosis"{
+            var testsViewController : TestsViewController = segue.destinationViewController as TestsViewController
+            testsViewController.complaint = self.detailItem as PFObject?
         }
     }
 }

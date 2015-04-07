@@ -7,8 +7,9 @@
 //
 
 import Parse
+import UIKit
 
-class DiagnosisViewController: PFQueryTableViewController, UISearchBarDelegate, UISearchDisplayDelegate{
+class DiagnosisViewController: PFQueryTableViewController{
     var complaint: PFObject!
     var searchTerm: String!
     
@@ -45,12 +46,6 @@ class DiagnosisViewController: PFQueryTableViewController, UISearchBarDelegate, 
         return query
     }
     
-    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
-        self.searchTerm = searchString
-        self.loadObjects()
-        return true
-    }
-    
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!, object: PFObject!) -> PFTableViewCell! {
         var cellId = "Cell"
         
@@ -62,5 +57,16 @@ class DiagnosisViewController: PFQueryTableViewController, UISearchBarDelegate, 
         cell?.textLabel?.text = object[self.textKey] as String!
         
         return cell
+    }
+}
+
+extension DiagnosisViewController: UISearchBarDelegate{
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
+        self.searchTerm = searchText
+        self.loadObjects()
+    }
+    func searchBarTextDidEndEditing(searchBar: UISearchBar){
+        self.searchTerm = nil
+        self.loadObjects()
     }
 }

@@ -108,7 +108,7 @@
         <!--Tests-->
         <scene sceneID="WAZ-0B-1yX">
             <objects>
-                <tableViewController title="Tests" id="4H9-0j-VGk" customClass="TestsViewController" sceneMemberID="viewController">
+                <tableViewController title="Tests" id="4H9-0j-VGk" customClass="TestsViewController" customModule="Shepherd" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GQl-xG-dSH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,7 +190,7 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <state key="normal" title="No"/>
                                 <connections>
-                                    <segue destination="4H9-0j-VGk" kind="show" id="6IM-li-c4W"/>
+                                    <segue destination="4H9-0j-VGk" kind="show" identifier="noDiagnosis" id="6IM-li-c4W"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -287,6 +287,6 @@
         <image name="stethoscope" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jq8-rI-Tbx"/>
+        <segue reference="hsz-FV-E9J"/>
     </inferredMetricsTieBreakers>
 </document>
