@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xV6-oa-h14">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xV6-oa-h14">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -9,14 +9,15 @@
         <scene sceneID="Yj3-nj-YSk">
             <objects>
                 <tabBarController id="xV6-oa-h14" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="XSw-79-8yD">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="XSw-79-8yD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="RMx-3f-FxP" kind="relationship" relationship="viewControllers" id="ykK-hB-HOg"/>
+                        <segue destination="xfY-kH-Rc7" kind="relationship" relationship="viewControllers" id="bq3-OM-1DN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zex-9I-ngZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -27,7 +28,7 @@
         <scene sceneID="pY4-Hu-kfo">
             <objects>
                 <navigationController title="Master" id="RMx-3f-FxP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="bx4-JV-Rhk"/>
+                    <tabBarItem key="tabBarItem" title="Complaints" image="caduceus" id="bx4-JV-Rhk"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -40,13 +41,38 @@
             <point key="canvasLocation" x="-38" y="-630"/>
         </scene>
         <!--Diagnoses-->
+        <scene sceneID="my3-Vk-4vq">
+            <objects>
+                <navigationController id="xfY-kH-Rc7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Diagnoses" image="stethoscope" id="mUe-B5-lmV"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DUc-YE-afO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="erj-ev-5Aq" kind="relationship" relationship="rootViewController" id="Jq8-rI-Tbx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gJu-MR-Ww5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2175" y="-1707"/>
+        </scene>
+        <!--Diagnoses-->
         <scene sceneID="CzL-37-auV">
             <objects>
-                <tableViewController title="Diagnoses" id="erj-ev-5Aq" customClass="DiagnosisViewController" sceneMemberID="viewController">
+                <tableViewController title="Diagnoses" id="erj-ev-5Aq" customClass="DiagnosisViewController" customModule="Shepherd" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VRt-0N-WNQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="HOd-B6-ZP6">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="erj-ev-5Aq" id="D1j-6q-ku4"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="3Jq-oZ-Hia" customClass="PFTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -60,8 +86,22 @@
                             <outlet property="delegate" destination="erj-ev-5Aq" id="4Go-in-dCm"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="3sb-bF-o1W"/>
+                    <navigationItem key="navigationItem" title="Diagnoses" id="cAc-BM-DZU"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="lQu-WX-dB6" id="MA2-Ij-bgd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2y-1J-mdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="lQu-WX-dB6">
+                    <connections>
+                        <outlet property="delegate" destination="erj-ev-5Aq" id="xCe-Lv-xd5"/>
+                        <outlet property="searchBar" destination="HOd-B6-ZP6" id="z38-sf-jNm"/>
+                        <outlet property="searchContentsController" destination="erj-ev-5Aq" id="hbI-CT-vzd"/>
+                        <outlet property="searchResultsDataSource" destination="erj-ev-5Aq" id="cq4-p8-jSf"/>
+                        <outlet property="searchResultsDelegate" destination="erj-ev-5Aq" id="dkN-Jg-hsN"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2175" y="-967"/>
         </scene>
@@ -70,9 +110,17 @@
             <objects>
                 <tableViewController title="Tests" id="4H9-0j-VGk" customClass="TestsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GQl-xG-dSH">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="g0K-9a-lU0">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="4H9-0j-VGk" id="wGU-8d-yv1"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="LCp-T9-rto" customClass="PFTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -86,8 +134,20 @@
                             <outlet property="delegate" destination="4H9-0j-VGk" id="H46-KH-DZq"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="Tmd-pe-DWm" id="4ss-H0-Aja"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Cy-4N-W4D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Tmd-pe-DWm">
+                    <connections>
+                        <outlet property="delegate" destination="4H9-0j-VGk" id="Kib-Kh-PYo"/>
+                        <outlet property="searchBar" destination="g0K-9a-lU0" id="whs-TC-hLb"/>
+                        <outlet property="searchContentsController" destination="4H9-0j-VGk" id="dP7-6J-MNj"/>
+                        <outlet property="searchResultsDataSource" destination="4H9-0j-VGk" id="JaS-74-ikf"/>
+                        <outlet property="searchResultsDelegate" destination="4H9-0j-VGk" id="AOg-b9-lff"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2170" y="-239"/>
         </scene>
@@ -100,7 +160,7 @@
                         <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Does the patient have a diagnosis?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Odd-rj-2G6">
@@ -121,7 +181,7 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <state key="normal" title="Yes"/>
                                 <connections>
-                                    <segue destination="erj-ev-5Aq" kind="show" id="xTz-m5-OKX"/>
+                                    <segue destination="erj-ev-5Aq" kind="show" identifier="yesDiagnosis" id="hsz-FV-E9J"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI0-wO-h0R">
@@ -163,9 +223,17 @@
             <objects>
                 <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="ChiefComplaintViewController" customModule="Shepherd" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="r7i-6Z-zg0">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" id="aU8-NW-fqb">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="7bK-jq-Zjz" id="qv9-yD-0Za"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD" customClass="PFTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
@@ -185,7 +253,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="JEX-9P-axG" kind="show" id="BZI-tc-lSi"/>
+                                    <segue destination="JEX-9P-axG" kind="show" identifier="show" id="BZI-tc-lSi"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -196,10 +264,29 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Chief Complaints" id="Zdf-7t-Un8"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="Ok8-jv-acN" id="epq-Jm-SpS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="Ok8-jv-acN">
+                    <connections>
+                        <outlet property="delegate" destination="7bK-jq-Zjz" id="EZd-vf-cOL"/>
+                        <outlet property="searchBar" destination="aU8-NW-fqb" id="2pB-4c-U2b"/>
+                        <outlet property="searchContentsController" destination="7bK-jq-Zjz" id="NWg-Ck-4k1"/>
+                        <outlet property="searchResultsDataSource" destination="7bK-jq-Zjz" id="nfB-yc-WLl"/>
+                        <outlet property="searchResultsDelegate" destination="7bK-jq-Zjz" id="iv2-pT-Mub"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="709" y="-630"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="caduceus" width="25" height="25"/>
+        <image name="stethoscope" width="25" height="25"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Jq8-rI-Tbx"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -6,16 +6,12 @@
 //  Copyright (c) 2015 Shepherd. All rights reserved.
 //
 
-import UIKit
-import CoreData
 import Parse
 
 
-class ChiefComplaintViewController: PFQueryTableViewController  {
-
-    var detailViewController: DiagnosisQuestionViewController? = nil
-    var managedObjectContext: NSManagedObjectContext? = nil
+class ChiefComplaintViewController: PFQueryTableViewController, UISearchDisplayDelegate  {
     var currentUser: PFUser? = nil
+    var searchTerm: String!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,8 +36,6 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-//        self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -59,15 +53,14 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
             self.presentViewController(logInController, animated:animated, completion: nil)
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     override func queryForTable() -> PFQuery! {
         var query = PFQuery(className: self.parseClassName)
 
+        if(self.searchTerm != nil){
+            query.whereKey("canonicalName", containsString: self.searchTerm.lowercaseString)
+        }
+        
         query.orderByAscending(self.textKey)
         return query
     }
@@ -88,11 +81,10 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("hi")
         if segue.identifier == "show" {
             if let indexPath = self.tableView.indexPathForSelectedRow(){
-                let object = self.objectAtIndexPath(indexPath) as PFObject?
-                let controller = (segue.destinationViewController as UINavigationController).topViewController as DiagnosisQuestionViewController
+                let object = self.objectAtIndexPath(indexPath) as PFObject!
+                let controller = segue.destinationViewController as DiagnosisQuestionViewController
                 controller.detailItem = object
             }
         }
@@ -116,5 +108,13 @@ extension ChiefComplaintViewController: PFSignUpViewControllerDelegate{
     
     func signUpViewControllerDidCancelSignUp(signUpController: PFSignUpViewController) -> Void {
         // NOOP
+    }
+}
+
+extension ChiefComplaintViewController: UISearchBarDelegate{
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
+        self.searchTerm = searchString
+        self.loadObjects()
+        return true
     }
 }

@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Parse
 
 class DiagnosisQuestionViewController: UIViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
 
-    var detailItem: AnyObject? {
+    var detailItem: PFObject! {
         didSet {
             // Update the view.
             self.configureView()
@@ -35,11 +36,11 @@ class DiagnosisQuestionViewController: UIViewController {
         self.configureView()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "yesDiagnosis"{
+            var diagnosisViewController : DiagnosisViewController = segue.destinationViewController as DiagnosisViewController
+            diagnosisViewController.complaint = self.detailItem as PFObject?
+        }
     }
-
-
 }
 
