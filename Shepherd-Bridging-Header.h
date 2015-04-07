@@ -14,3 +14,4 @@
 
 #import <Bolts/Bolts.h>
 #import <ParseUI/ParseUI.h>
+#import <TDBadgedCell/TDBadgedCell.h>

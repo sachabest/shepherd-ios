@@ -1,16 +1,15 @@
 //
-//  DiagnosisViewController.swift
+//  TreatmentViewController.swift
 //  Shepherd
 //
-//  Created by Rohun Bansal on 3/29/15.
+//  Created by Rohun Bansal on 4/6/15.
 //  Copyright (c) 2015 Shepherd. All rights reserved.
 //
 
 import Parse
-import UIKit
 
-class DiagnosisViewController: PFQueryTableViewController{
-    var complaint: PFObject!
+class TreatmentViewController: PFQueryTableViewController{
+    var diagnosis: PFObject!
     var searchTerm: String!
     
     override func awakeFromNib() {
@@ -27,7 +26,7 @@ class DiagnosisViewController: PFQueryTableViewController{
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.parseClassName = "Diagnosis"
+        self.parseClassName = "Treatment"
         self.textKey = "Name"
         self.pullToRefreshEnabled = true
         self.paginationEnabled = false
@@ -35,8 +34,8 @@ class DiagnosisViewController: PFQueryTableViewController{
     
     override func queryForTable() -> PFQuery! {
         var query = PFQuery(className: self.parseClassName)
-        if(self.complaint != nil){
-            query.whereKey("Complaint", equalTo: self.complaint)
+        if(self.diagnosis != nil){
+            query.whereKey("Diagnosis", equalTo: self.diagnosis)
         }
         if(self.searchTerm != nil){
             query.whereKey("canonicalName", containsString: self.searchTerm)
@@ -51,26 +50,17 @@ class DiagnosisViewController: PFQueryTableViewController{
         
         var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as PFTableViewCell!
         if(cell == nil){
-            cell = PFTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+            cell = PFTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellId)
         }
         
         cell?.textLabel?.text = object[self.textKey] as String!
+        cell?.detailTextLabel?.text = "$" + String(object["Price"] as Int)
         
         return cell
     }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "treatment" {
-            if let indexPath = self.tableView.indexPathForSelectedRow(){
-                let object = self.objectAtIndexPath(indexPath) as PFObject!
-                let controller = segue.destinationViewController as TreatmentViewController
-                controller.diagnosis = object
-            }
-        }
-    }
 }
 
-extension DiagnosisViewController: UISearchBarDelegate{
+extension TreatmentViewController: UISearchBarDelegate{
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
         self.searchTerm = searchText
         self.loadObjects()
