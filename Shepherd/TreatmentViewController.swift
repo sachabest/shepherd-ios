@@ -54,7 +54,7 @@ class TreatmentViewController: PFQueryTableViewController{
         }
         
         cell?.textLabel?.text = object[self.textKey] as String!
-        cell?.detailTextLabel?.text = "$" + String(object["Price"] as Int)
+        cell?.detailTextLabel?.text = "$" + (object["Price"] as Double).format(".2")
         
         return cell
     }

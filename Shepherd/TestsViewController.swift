@@ -8,7 +8,7 @@
 
 import Parse
 
-class TestsViewController: PFQueryTableViewController, UISearchBarDelegate, UISearchDisplayDelegate{
+class TestsViewController: PFQueryTableViewController{
     var complaint: PFObject!
     var searchTerm: String!
     
@@ -50,10 +50,11 @@ class TestsViewController: PFQueryTableViewController, UISearchBarDelegate, UISe
         
         var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as PFTableViewCell!
         if(cell == nil){
-            cell = PFTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
+            cell = PFTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellId)
         }
         
         cell?.textLabel?.text = object[self.textKey] as String!
+        cell?.detailTextLabel?.text = "$" + (object["Price"] as Double).format(".2")
         
         return cell
     }
