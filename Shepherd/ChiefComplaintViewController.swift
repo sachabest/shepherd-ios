@@ -20,10 +20,6 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
             self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
         }
     }
-    
-    override init!(style: UITableViewStyle, className: String!) {
-        super.init(style: style, className: className)
-    }
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -45,7 +41,7 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
         } else {
             var logInController = PFLogInViewController()
             logInController.delegate = self
-            logInController.signUpController.delegate = self
+            logInController.signUpController?.delegate = self
             logInController.fields = (PFLogInFields.UsernameAndPassword
                 | PFLogInFields.LogInButton
                 | PFLogInFields.SignUpButton
@@ -54,26 +50,26 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
         }
     }
 
-    override func queryForTable() -> PFQuery! {
-        var query = PFQuery(className: self.parseClassName)
+    override func queryForTable() -> PFQuery {
+        var query = PFQuery(className: self.parseClassName!)
 
         if(self.searchTerm != nil){
             query.whereKey("canonicalName", containsString: self.searchTerm.lowercaseString)
         }
         
-        query.orderByAscending(self.textKey)
+        query.orderByAscending(self.textKey!)
         return query
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!, object: PFObject!) -> PFTableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject!) -> PFTableViewCell? {
         var cellId = "Cell"
     
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as PFTableViewCell!
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as! PFTableViewCell!
         if(cell == nil){
             cell = PFTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
         
-        cell?.textLabel?.text = object[self.textKey] as String!
+        cell?.textLabel?.text = object[self.textKey!] as! String!
 
         return cell
     }
@@ -84,7 +80,7 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
         if segue.identifier == "show" {
             if let indexPath = self.tableView.indexPathForSelectedRow(){
                 let object = self.objectAtIndexPath(indexPath) as PFObject!
-                let controller = segue.destinationViewController as DiagnosisQuestionViewController
+                let controller = segue.destinationViewController as! DiagnosisQuestionViewController
                 controller.detailItem = object
             }
         }
@@ -93,7 +89,7 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
 
 
 extension ChiefComplaintViewController : PFLogInViewControllerDelegate {
-    func logInViewController(controller: PFLogInViewController, didLogInUser user: PFUser!) -> Void {
+    func logInViewController(controller: PFLogInViewController, didLogInUser user: PFUser) -> Void {
         dismissViewControllerAnimated(true, completion: nil)
     }
     func logInViewControllerDidCancelLogIn(controller: PFLogInViewController) -> Void {

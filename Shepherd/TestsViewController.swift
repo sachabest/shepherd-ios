@@ -20,10 +20,6 @@ class TestsViewController: PFQueryTableViewController{
         }
     }
     
-    override init!(style: UITableViewStyle, className: String!) {
-        super.init(style: style, className: className)
-    }
-    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.parseClassName = "Test"
@@ -32,8 +28,8 @@ class TestsViewController: PFQueryTableViewController{
         self.paginationEnabled = false
     }
     
-    override func queryForTable() -> PFQuery! {
-        var query = PFQuery(className: self.parseClassName)
+    override func queryForTable() -> PFQuery {
+        var query = PFQuery(className: self.parseClassName!)
         if(self.complaint != nil){
             query.whereKey("Complaint", equalTo: self.complaint)
         }
@@ -41,20 +37,20 @@ class TestsViewController: PFQueryTableViewController{
             query.whereKey("canonicalName", containsString: self.searchTerm)
         }
         
-        query.orderByAscending(self.textKey)
+        query.orderByAscending(self.textKey!)
         return query
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!, object: PFObject!) -> PFTableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject!) -> PFTableViewCell? {
         var cellId = "Cell"
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as PFTableViewCell!
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as! PFTableViewCell!
         if(cell == nil){
             cell = PFTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellId)
         }
         
-        cell?.textLabel?.text = object[self.textKey] as String!
-        cell?.detailTextLabel?.text = "$" + (object["Price"] as Double).format(".2")
+        cell?.textLabel?.text = object[self.textKey!] as! String!
+        cell?.detailTextLabel?.text = "$" + (object["Price"] as! Double).format(".2")
         
         return cell
     }

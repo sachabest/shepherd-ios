@@ -12,17 +12,13 @@ import UIKit
 class DiagnosisViewController: PFQueryTableViewController{
     var complaint: PFObject!
     var searchTerm: String!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             self.clearsSelectionOnViewWillAppear = false
             self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
         }
-    }
-    
-    override init!(style: UITableViewStyle, className: String!) {
-        super.init(style: style, className: className)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -33,8 +29,8 @@ class DiagnosisViewController: PFQueryTableViewController{
         self.paginationEnabled = false
     }
     
-    override func queryForTable() -> PFQuery! {
-        var query = PFQuery(className: self.parseClassName)
+    override func queryForTable() -> PFQuery {
+        var query = PFQuery(className: self.parseClassName!)
         if(self.complaint != nil){
             query.whereKey("Complaint", equalTo: self.complaint)
         }
@@ -42,19 +38,19 @@ class DiagnosisViewController: PFQueryTableViewController{
             query.whereKey("canonicalName", containsString: self.searchTerm)
         }
         
-        query.orderByAscending(self.textKey)
+        query.orderByAscending(self.textKey!)
         return query
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!, object: PFObject!) -> PFTableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject!) -> PFTableViewCell? {
         var cellId = "Cell"
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as PFTableViewCell!
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as! PFTableViewCell!
         if(cell == nil){
             cell = PFTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
         }
         
-        cell?.textLabel?.text = object[self.textKey] as String!
+        cell?.textLabel?.text = object[self.textKey!] as! String!
         
         return cell
     }
@@ -63,7 +59,7 @@ class DiagnosisViewController: PFQueryTableViewController{
         if segue.identifier == "treatment" {
             if let indexPath = self.tableView.indexPathForSelectedRow(){
                 let object = self.objectAtIndexPath(indexPath) as PFObject!
-                let controller = segue.destinationViewController as TreatmentViewController
+                let controller = segue.destinationViewController as! TreatmentViewController
                 controller.diagnosis = object
             }
         }
