@@ -34,6 +34,10 @@ class TestsViewController: SectionedParseTableViewController{
         return cell
 
     }
+    
+    @IBAction func sortList(sender: UIButton) {
+       //
+    }
 }
 
 extension TestsViewController: UISearchBarDelegate{
