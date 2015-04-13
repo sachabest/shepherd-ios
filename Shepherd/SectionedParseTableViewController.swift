@@ -124,6 +124,17 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         return self.sections[section].name
     }
     
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
+        var indexTitles : [String] = []
+        
+        for section in self.sections{
+            var letterString = (section.name as NSString).substringToIndex(1)
+            indexTitles.append(letterString)
+        }
+        
+        return indexTitles
+    }
+    
     func objectAtIndexPath(indexPath: NSIndexPath) -> PFObject{
         return self.sections[indexPath.section].objects[indexPath.row]
     }
