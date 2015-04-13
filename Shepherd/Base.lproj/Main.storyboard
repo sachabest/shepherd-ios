@@ -127,6 +127,42 @@
             </objects>
             <point key="canvasLocation" x="1423" y="-1589"/>
         </scene>
+        <!--Treatment Summary-->
+        <scene sceneID="Px0-Ea-Teg">
+            <objects>
+                <viewController title="Treatment Summary" id="Ywm-aU-Bi2" customClass="TreatmentSummaryViewController" customModule="Shepherd" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GdY-ac-sQc"/>
+                        <viewControllerLayoutGuide type="bottom" id="MQT-Fz-y0K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PMV-Il-MWD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2L-0b-vS0">
+                                <rect key="frame" x="0.0" y="507" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="PiL-rV-dDW"/>
+                                    <barButtonItem title="Add to Plan" id="iTh-1W-VPj">
+                                        <connections>
+                                            <action selector="addToPlan:" destination="Ywm-aU-Bi2" id="wWe-1q-oz3"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="I2L-0b-vS0" firstAttribute="bottom" secondItem="MQT-Fz-y0K" secondAttribute="top" id="BF7-gs-OM9"/>
+                            <constraint firstAttribute="trailing" secondItem="I2L-0b-vS0" secondAttribute="trailing" id="FfZ-J2-Paw"/>
+                            <constraint firstItem="I2L-0b-vS0" firstAttribute="leading" secondItem="PMV-Il-MWD" secondAttribute="leading" id="YQo-SG-q3l"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nfu-Xr-pIn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2288" y="-2610"/>
+        </scene>
         <!--Treatments-->
         <scene sceneID="Vq1-O2-ffW">
             <objects>
@@ -144,7 +180,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="3xW-WR-vAY" detailTextLabel="yFG-wM-6RB" style="IBUITableViewCellStyleSubtitle" id="k6E-qT-mbv" customClass="PFTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="3xW-WR-vAY" detailTextLabel="yFG-wM-6RB" style="IBUITableViewCellStyleSubtitle" id="k6E-qT-mbv" customClass="PFTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k6E-qT-mbv" id="Rdg-SG-zYo">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -163,6 +199,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Ywm-aU-Bi2" kind="show" identifier="summary" id="V8n-oa-FAc"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

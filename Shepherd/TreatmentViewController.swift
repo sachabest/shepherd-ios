@@ -41,6 +41,16 @@ class TreatmentViewController: SectionedParseTableViewController{
                 self.loadObjects()
         })
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "summary" {
+            if let indexPath = self.tableView.indexPathForSelectedRow(){
+                let object = self.objectAtIndexPath(indexPath) as PFObject!
+                let controller = segue.destinationViewController as! TreatmentSummaryViewController
+                controller.treatment = object
+            }
+        }
+    }
 }
 
 extension TreatmentViewController: UISearchBarDelegate{
