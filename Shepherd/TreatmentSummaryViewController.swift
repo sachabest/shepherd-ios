@@ -10,9 +10,14 @@ import Parse
 
 class TreatmentSummaryViewController: UIViewController{
     var treatment: PFObject!
+     @IBOutlet var treatmentLabel: UILabel!
     
     @IBAction func addToPlan(sender: UIButton) {
         println("adding to plan")
         println(self.treatment)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.treatmentLabel.text = self.treatment["Name"] as! String!
     }
 }

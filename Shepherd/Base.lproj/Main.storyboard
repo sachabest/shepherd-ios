@@ -150,14 +150,26 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74j-lg-6Th">
+                                <rect key="frame" x="16" y="72" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="I2L-0b-vS0" firstAttribute="bottom" secondItem="MQT-Fz-y0K" secondAttribute="top" id="BF7-gs-OM9"/>
+                            <constraint firstItem="74j-lg-6Th" firstAttribute="top" secondItem="GdY-ac-sQc" secondAttribute="bottom" constant="8" symbolic="YES" id="Epw-TZ-qqY"/>
                             <constraint firstAttribute="trailing" secondItem="I2L-0b-vS0" secondAttribute="trailing" id="FfZ-J2-Paw"/>
                             <constraint firstItem="I2L-0b-vS0" firstAttribute="leading" secondItem="PMV-Il-MWD" secondAttribute="leading" id="YQo-SG-q3l"/>
+                            <constraint firstItem="74j-lg-6Th" firstAttribute="centerX" secondItem="I2L-0b-vS0" secondAttribute="centerX" id="eMK-66-KkV"/>
+                            <constraint firstItem="74j-lg-6Th" firstAttribute="leading" secondItem="PMV-Il-MWD" secondAttribute="leadingMargin" id="f2T-I8-iuN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="treatmentLabel" destination="74j-lg-6Th" id="wbV-hn-Res"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nfu-Xr-pIn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
