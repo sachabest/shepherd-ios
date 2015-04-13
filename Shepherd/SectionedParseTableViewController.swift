@@ -15,7 +15,9 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
     var parseClassName : String = ""
     var firstLoad : Bool = true
     var objects : [PFObject] = []
+    
     var textKey: String!
+    var sortKey: String!
     var sectionKey: String!
     
     var sections: [Section] = []
@@ -49,7 +51,12 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
     
     func addSortsToQuery(query: PFQuery) -> PFQuery {
         query.orderByAscending(self.sectionKey)
-        query.orderByAscending(self.textKey!)
+        
+        if(self.sortKey != nil){
+            query.orderByAscending(self.sortKey!)
+        }else{
+            query.orderByAscending(self.textKey!)
+        }
         
         return query
     }

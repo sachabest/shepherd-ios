@@ -34,6 +34,13 @@ class TreatmentViewController: SectionedParseTableViewController{
         return cell
     }
     
+    @IBAction func sortList(sender: UIButton) {
+        UIActionSheet.showInView(self.view, withTitle: "Select Sort Method", cancelButtonTitle: "Cancel", destructiveButtonTitle: nil
+            , otherButtonTitles: ["Name", "Price"], tapBlock: {(actionSheet: UIActionSheet, buttonIndex: Int) in
+                self.sortKey = actionSheet.buttonTitleAtIndex(buttonIndex)
+                self.loadObjects()
+        })
+    }
 }
 
 extension TreatmentViewController: UISearchBarDelegate{

@@ -170,7 +170,13 @@
                             <outlet property="delegate" destination="ljZ-kq-fXv" id="FhT-RJ-IeK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Treatments" id="yxb-wu-TiA"/>
+                    <navigationItem key="navigationItem" title="Treatments" id="yxb-wu-TiA">
+                        <barButtonItem key="rightBarButtonItem" title="Sort..." id="6aG-Bi-g8C">
+                            <connections>
+                                <action selector="sortList:" destination="ljZ-kq-fXv" id="QRq-3m-E2z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="Yx4-iP-FGG" id="nyC-ch-Dxw"/>
                     </connections>
