@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
@@ -10,13 +10,16 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="  Copyright (c) 2015 Shepherd. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2015 Shepherd. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
                     <rect key="frame" x="20" y="443" width="441" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="HFh-WY-4WL"/>
+                    </constraints>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="302" placeholderIntrinsicHeight="293" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Lm8-bd-cb1">
+                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="302" placeholderIntrinsicHeight="293" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Lm8-bd-cb1">
                     <rect key="frame" x="71" y="79" width="339" height="312"/>
                 </imageView>
             </subviews>
@@ -26,9 +29,9 @@
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
                 <constraint firstItem="Lm8-bd-cb1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="71.5" id="eKc-zQ-cLK"/>
-                <constraint firstAttribute="trailing" secondItem="Lm8-bd-cb1" secondAttribute="trailing" constant="71.5" id="fkM-z6-eDE"/>
-                <constraint firstItem="Lm8-bd-cb1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="71" id="q66-vs-gKN"/>
-                <constraint firstItem="8ie-xW-0ye" firstAttribute="top" secondItem="Lm8-bd-cb1" secondAttribute="bottom" constant="71" id="wsl-Q7-9d5"/>
+                <constraint firstAttribute="trailing" secondItem="Lm8-bd-cb1" secondAttribute="trailing" constant="70" id="fkM-z6-eDE"/>
+                <constraint firstItem="Lm8-bd-cb1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="79" id="q66-vs-gKN"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="top" secondItem="Lm8-bd-cb1" secondAttribute="bottom" constant="52" id="wsl-Q7-9d5"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
