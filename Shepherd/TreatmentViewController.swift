@@ -8,52 +8,32 @@
 
 import Parse
 
-class TreatmentViewController: PFQueryTableViewController{
+class TreatmentViewController: SectionedParseTableViewController{
     var diagnosis: PFObject!
-    var searchTerm: String!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            self.clearsSelectionOnViewWillAppear = false
-            self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
-        }
-    }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.parseClassName = "Treatment"
         self.textKey = "Name"
-        self.pullToRefreshEnabled = true
-        self.paginationEnabled = false
+        self.sectionKey = "Category"
     }
     
     override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
+        var query = PFQuery(className: self.parseClassName)
         if(self.diagnosis != nil){
             query.whereKey("Diagnosis", equalTo: self.diagnosis)
         }
-        if(self.searchTerm != nil){
-            query.whereKey("canonicalName", containsString: self.searchTerm)
-        }
         
-        query.orderByAscending(self.textKey!)
         return query
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject!) -> PFTableViewCell? {
-        var cellId = "Cell"
-        
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as! PFTableViewCell!
-        if(cell == nil){
-            cell = PFTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellId)
-        }
-        
-        cell?.textLabel?.text = object[self.textKey!] as! String!
-        cell?.detailTextLabel?.text = "$" + (object["Price"] as! Double).format(".2")
+    override func prepareCell(cell: UITableViewCell, object: PFObject) -> UITableViewCell {
+        cell.textLabel?.text = object[self.textKey!] as! String!
+        cell.detailTextLabel?.text = "$" + (object["Price"] as! Double).format(".2")
         
         return cell
     }
+    
 }
 
 extension TreatmentViewController: UISearchBarDelegate{
