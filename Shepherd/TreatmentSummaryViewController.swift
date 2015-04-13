@@ -10,11 +10,24 @@ import Parse
 
 class TreatmentSummaryViewController: UIViewController{
     var treatment: PFObject!
-     @IBOutlet var treatmentLabel: UILabel!
+    @IBOutlet var treatmentLabel: UILabel!
     
     @IBAction func addToPlan(sender: UIButton) {
-        println("adding to plan")
-        println(self.treatment)
+        if !contains(PatientPlan.sharedInstance.treatments, self.treatment){
+            PatientPlan.sharedInstance.treatments.append(self.treatment)
+            
+            let alert = UIAlertView()
+            alert.title = "Treatment Added"
+            alert.message = "Treatment has been added to Patient Plan"
+            alert.addButtonWithTitle("Ok")
+            alert.show()
+        }else{
+            let alert = UIAlertView()
+            alert.title = "Treatment Not Added"
+            alert.message = "Treatment already exists in Patient Plan"
+            alert.addButtonWithTitle("Ok")
+            alert.show()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
