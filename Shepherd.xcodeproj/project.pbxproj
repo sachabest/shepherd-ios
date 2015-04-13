@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04A8B70E1ADB71E7002F3909 /* PatientPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A8B70D1ADB71E7002F3909 /* PatientPlan.swift */; };
 		161AE3321AC8D4B80006D634 /* TestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161AE3311AC8D4B80006D634 /* TestsViewController.swift */; };
 		161AE3341AC8D52C0006D634 /* DiagnosisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161AE3331AC8D52C0006D634 /* DiagnosisViewController.swift */; };
 		1620AEC21AC22CA9006F6AAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1620AEC11AC22CA9006F6AAE /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04A8B70D1ADB71E7002F3909 /* PatientPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientPlan.swift; sourceTree = "<group>"; };
 		1617E4A01AC255EE00AB002B /* Shepherd-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Shepherd-Bridging-Header.h"; sourceTree = "<group>"; };
 		161AE3311AC8D4B80006D634 /* TestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsViewController.swift; sourceTree = "<group>"; };
 		161AE3331AC8D52C0006D634 /* DiagnosisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagnosisViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				1620AEC11AC22CA9006F6AAE /* AppDelegate.swift */,
 				1620AEC61AC22CA9006F6AAE /* ChiefComplaintViewController.swift */,
+				04A8B70D1ADB71E7002F3909 /* PatientPlan.swift */,
 				1620AEC81AC22CA9006F6AAE /* DiagnosisQuestionViewController.swift */,
 				1620AECA1AC22CA9006F6AAE /* Main.storyboard */,
 				1620AECD1AC22CA9006F6AAE /* Images.xcassets */,
@@ -292,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1620AEC51AC22CA9006F6AAE /* Shepherd.xcdatamodeld in Sources */,
+				04A8B70E1ADB71E7002F3909 /* PatientPlan.swift in Sources */,
 				1620AEC21AC22CA9006F6AAE /* AppDelegate.swift in Sources */,
 				165196571ADB3F9400CEE6E2 /* SectionedParseTableViewController.swift in Sources */,
 				161AE3341AC8D52C0006D634 /* DiagnosisViewController.swift in Sources */,
