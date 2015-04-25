@@ -9,7 +9,7 @@
 import Parse
 import UIKit
 
-class DiagnosisViewController: SectionedParseTableViewController{
+class DiagnosisViewController: SectionedParseTableViewController {
     var complaint: PFObject!
 
     required init(coder aDecoder: NSCoder) {
@@ -44,7 +44,7 @@ class DiagnosisViewController: SectionedParseTableViewController{
     }
 }
 
-extension DiagnosisViewController: UISearchBarDelegate{
+extension DiagnosisViewController: UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchTerm = searchText
         self.loadObjects()

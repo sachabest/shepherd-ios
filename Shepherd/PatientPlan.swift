@@ -18,4 +18,19 @@ class PatientPlan {
         return _PatientPlanSharedInstance
     }
     
+    func addTreatment(treatment: PFObject) {
+        self.treatments.append(treatment)
+    }
+    
+    func containsTreatment(treatment: PFObject) -> Bool {
+        return contains(self.treatments, treatment)
+    }
+    
+    func countTreatments() -> Int {
+        return self.treatments.count
+    }
+    
+    func isEmpty() -> Bool {
+        return self.countTreatments() == 0
+    }
 }

@@ -15,8 +15,8 @@ class TreatmentSummaryViewController: UIViewController {
     @IBAction func addToPlan(sender: UIButton) {
         let alert = UIAlertView()
         
-        if !contains(PatientPlan.sharedInstance.treatments, self.treatment) {
-            PatientPlan.sharedInstance.treatments.append(self.treatment)
+        if !PatientPlan.sharedInstance.containsTreatment(self.treatment) {
+            PatientPlan.sharedInstance.addTreatment(self.treatment)
             
             alert.title = "Treatment Added"
             alert.message = "Treatment has been added to Patient Plan"

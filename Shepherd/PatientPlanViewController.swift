@@ -38,7 +38,7 @@ class PatientPlanViewController: UIViewController {
         }
         
         override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return PatientPlan.sharedInstance.treatments.count
+            return PatientPlan.sharedInstance.countTreatments()
         }
         
         override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
