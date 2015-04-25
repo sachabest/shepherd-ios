@@ -5,3 +5,8 @@ To install dependencies, run:
 
     gem install cocoapods
     pod install
+
+
+## Credits
+
+Icons from http://icons8.com/download-free-icons-for-ios-tab-bar/
