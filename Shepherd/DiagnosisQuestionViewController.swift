@@ -6,14 +6,9 @@
 //  Copyright (c) 2015 Shepherd. All rights reserved.
 //
 
-import UIKit
 import Parse
 
 class DiagnosisQuestionViewController: UIViewController {
-
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
-
-
     var detailItem: PFObject! {
         didSet {
             // Update the view.
@@ -24,17 +19,8 @@ class DiagnosisQuestionViewController: UIViewController {
     func configureView() {
         // Update the user interface for the detail item.
         if let detail: AnyObject = self.detailItem {
-            if let label = self.detailDescriptionLabel {
-                label.text = detail.valueForKey("timeStamp")!.description
-            }
+            self.title = "Complaint: " + (detail["Name"] as! String!)
         }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view, typically from a nib.
-        self.configureView()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
