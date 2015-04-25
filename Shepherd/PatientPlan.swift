@@ -26,6 +26,10 @@ class PatientPlan {
         return contains(self.treatments, treatment)
     }
     
+    func clearAll() {
+        self.treatments.removeAll(keepCapacity: true)
+    }
+    
     func countTreatments() -> Int {
         return self.treatments.count
     }

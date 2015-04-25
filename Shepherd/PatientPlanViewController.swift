@@ -32,6 +32,37 @@ class PatientPlanViewController: UIViewController {
         })
     }
     
+    @IBAction func shareButtonClicked(sender: UIButton) {
+        if PatientPlan.sharedInstance.isEmpty() {
+            let alert = UIAlertView()
+            alert.title = "Treatment Plan Empty"
+            alert.message = "There are no treatments in the treatment plan. Please add some before sharing."
+            alert.addButtonWithTitle("Ok")
+            alert.show()
+            
+            return
+        }
+        
+        var textToShare = "<html><body><p><h1>Patient Plan</h1></p>" +
+            "<table style=\"border-collapse: collapse; border: 1px solid black\"><thead><tr><th style=\"text-align: left; border: 1px solid black\">Treatment</th><th style=\"text-align: right; border: 1px solid black\">Cost</th></tr></thead>"
+        
+        for treatment in PatientPlan.sharedInstance.treatments {
+            textToShare += "<tr><td  style=\"text-align: left; border: 1px solid black\">" + (treatment["Name"] as! String!) + "</td><td style=\"text-align: right; border: 1px solid black\">" + ("$" + (treatment["Price"] as! Double).format(".2")) + "</td></tr>"
+        }
+        
+        textToShare += "<tbody></tbody></table>"
+        
+        textToShare += "<br>Created with Shepherd, a <a href=\"https://www.seas.upenn.edu/~cdmurphy/cis350/\">Penn CIS 350</a> Project by <a href=\"http://rohunbansal.com/\">Rohun Bansal</a>, <a href=\"https://www.linkedin.com/pub/hannah-cutler/83/743/b6b\">Hannah Cutler</a>, and <a href=\"https://www.linkedin.com/pub/reuben-abraham/98/482/9a3\">Reuben Abraham</a></body></html>"
+        
+        let objectsToShare = [textToShare]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+        // Excluded Activities Codes
+        activityVC.excludedActivityTypes = [UIActivityTypeAirDrop, UIActivityTypeAddToReadingList]
+        
+        self.presentViewController(activityVC, animated: true, completion: nil)
+    }
+    
     class PatientPlanTableViewController: UITableViewController, UITableViewDataSource {
         override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
             return 1
