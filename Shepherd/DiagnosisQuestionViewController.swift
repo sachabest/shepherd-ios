@@ -10,9 +10,7 @@ import UIKit
 import Parse
 
 class DiagnosisQuestionViewController: UIViewController {
-
     @IBOutlet weak var detailDescriptionLabel: UILabel!
-
 
     var detailItem: PFObject! {
         didSet {
@@ -24,9 +22,7 @@ class DiagnosisQuestionViewController: UIViewController {
     func configureView() {
         // Update the user interface for the detail item.
         if let detail: AnyObject = self.detailItem {
-            if let label = self.detailDescriptionLabel {
-                label.text = detail.valueForKey("timeStamp")!.description
-            }
+            self.title = "Complaint: " + (detail["Name"] as! String!)
         }
     }
 

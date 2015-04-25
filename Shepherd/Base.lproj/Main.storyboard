@@ -441,6 +441,7 @@
                                 <color key="backgroundColor" red="0.86047464609146118" green="0.86062270402908325" blue="0.86046528816223145" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Hqv-7i-qNV"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="Lpm-cc-YLL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <state key="normal" title="Yes"/>
@@ -451,6 +452,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI0-wO-h0R">
                                 <rect key="frame" x="16" y="368" width="568" height="80"/>
                                 <color key="backgroundColor" red="0.86047464609146118" green="0.86062270402908325" blue="0.86046528816223145" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="jGV-Ir-KLT"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <state key="normal" title="No"/>
                                 <connections>
@@ -476,7 +480,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" title="Complaint: test" id="mOI-FS-AaM"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
@@ -571,8 +575,8 @@
         <image name="syringe" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jq8-rI-Tbx"/>
         <segue reference="dTY-hH-5zN"/>
-        <segue reference="jgs-wP-J4Y"/>
+        <segue reference="hsz-FV-E9J"/>
+        <segue reference="6IM-li-c4W"/>
     </inferredMetricsTieBreakers>
 </document>
