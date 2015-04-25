@@ -12,14 +12,7 @@ class DiagnosisQuestionViewController: UIViewController {
     var detailItem: PFObject! {
         didSet {
             // Update the view.
-            self.configureView()
-        }
-    }
-
-    func configureView() {
-        // Update the user interface for the detail item.
-        if let detail: AnyObject = self.detailItem {
-            self.title = "Complaint: " + (detail["Name"] as! String!)
+            self.title = "Complaint: " + (self.detailItem["Name"] as! String!)
         }
     }
 
@@ -33,4 +26,3 @@ class DiagnosisQuestionViewController: UIViewController {
         }
     }
 }
-
