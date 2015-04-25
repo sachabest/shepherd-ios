@@ -45,11 +45,12 @@ class DiagnosisViewController: SectionedParseTableViewController{
 }
 
 extension DiagnosisViewController: UISearchBarDelegate{
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchTerm = searchText
         self.loadObjects()
     }
-    func searchBarTextDidEndEditing(searchBar: UISearchBar){
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         self.searchTerm = nil
         self.loadObjects()
     }

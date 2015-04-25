@@ -8,7 +8,7 @@
 
 import Parse
 
-class TestsViewController: SectionedParseTableViewController{
+class TestsViewController: SectionedParseTableViewController {
     var complaint: PFObject!
     
     required init(coder aDecoder: NSCoder) {
@@ -36,20 +36,21 @@ class TestsViewController: SectionedParseTableViewController{
     }
     
     @IBAction func sortList(sender: UIButton) {
-        UIActionSheet.showInView(self.view, withTitle: "Select Sort Method", cancelButtonTitle: "Cancel", destructiveButtonTitle: nil
-            , otherButtonTitles: ["Name", "Price"], tapBlock: {(actionSheet: UIActionSheet, buttonIndex: Int) in
+        UIActionSheet.showInView(self.view, withTitle: "Select Sort Method", cancelButtonTitle: "Cancel", destructiveButtonTitle: nil,
+            otherButtonTitles: ["Name", "Price"], tapBlock: {(actionSheet: UIActionSheet, buttonIndex: Int) in
                 self.sortKey = actionSheet.buttonTitleAtIndex(buttonIndex)
                 self.loadObjects()
         })
     }
 }
 
-extension TestsViewController: UISearchBarDelegate{
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
+extension TestsViewController: UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchTerm = searchText
         self.loadObjects()
     }
-    func searchBarTextDidEndEditing(searchBar: UISearchBar){
+
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         self.searchTerm = nil
         self.loadObjects()
     }

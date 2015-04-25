@@ -13,31 +13,19 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
     var currentUser: PFUser? = nil
     var searchTerm: String!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            self.clearsSelectionOnViewWillAppear = false
-            self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
-        }
-    }
-
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
         self.parseClassName = "Complaint"
         self.textKey = "Name"
         self.pullToRefreshEnabled = true
         self.paginationEnabled = false
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
 
     override func viewDidAppear(animated: Bool) {
         self.currentUser = PFUser.currentUser()
         if self.currentUser != nil {
-            
+            // TODO
         } else {
             var logInController = PFLogInViewController()
             logInController.delegate = self
@@ -78,7 +66,7 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "show" {
-            if let indexPath = self.tableView.indexPathForSelectedRow(){
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let object = self.objectAtIndexPath(indexPath) as PFObject!
                 let controller = segue.destinationViewController as! DiagnosisQuestionViewController
                 controller.detailItem = object
@@ -92,12 +80,13 @@ extension ChiefComplaintViewController : PFLogInViewControllerDelegate {
     func logInViewController(controller: PFLogInViewController, didLogInUser user: PFUser) -> Void {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
     func logInViewControllerDidCancelLogIn(controller: PFLogInViewController) -> Void {
         // NOOP
     }
 }
 
-extension ChiefComplaintViewController: PFSignUpViewControllerDelegate{
+extension ChiefComplaintViewController: PFSignUpViewControllerDelegate {
     func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) -> Void {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -107,12 +96,13 @@ extension ChiefComplaintViewController: PFSignUpViewControllerDelegate{
     }
 }
 
-extension ChiefComplaintViewController: UISearchBarDelegate{
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
+extension ChiefComplaintViewController: UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchTerm = searchText
         self.loadObjects()
     }
-    func searchBarTextDidEndEditing(searchBar: UISearchBar){
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         self.searchTerm = nil
         self.loadObjects()
     }

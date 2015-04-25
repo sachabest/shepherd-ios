@@ -1,4 +1,4 @@
-    //
+//
 //  AppDelegate.swift
 //  Shepherd
 //
@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDel
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         let tabBarController = self.window!.rootViewController as! UITabBarController
@@ -24,12 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDel
         
         let firstNavigationController = tabBarController.viewControllers!.first as! UINavigationController
         firstNavigationController.delegate = self
-        
-//        let masterNavigationController = self.window!.rootViewController as UINavigationController
-//        masterNavigationController.delegate = self
-
-//        let controller = masterNavigationController.topViewController as ChiefComplaintViewController
-//        controller.managedObjectContext = self.managedObjectContext
         
         Parse.enableLocalDatastore()
         Parse.setApplicationId("sC51qbtpTGmAuGNXHEQO61uvIYEoC7XClyIuIOb7", clientKey: "6XbLtHBOgarLeMI7ISWqjBqZfBno6lffUsMxJklP")
@@ -49,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDel
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-            }
+    }
 
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
@@ -134,7 +127,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDel
     }
 
 }
-    
+
+// extends the Double class in order to have global access to string-formatting-from-doubles
 extension Double {
     func format(f: String) -> String {
         return NSString(format: "%\(f)f", self) as String

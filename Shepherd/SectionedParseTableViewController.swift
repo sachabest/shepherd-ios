@@ -8,12 +8,11 @@
 
 import Parse
 
-class SectionedParseTableViewController: UITableViewController, UITableViewDataSource{
+class SectionedParseTableViewController: UITableViewController, UITableViewDataSource {
     var searchTerm: String!
     var searchField: String = "canonicalName"
     
     var parseClassName : String = ""
-    var firstLoad : Bool = true
     var objects : [PFObject] = []
     
     var textKey: String!
@@ -40,8 +39,8 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         return query
     }
     
-    func addDynamicSearchToQuery(query: PFQuery) -> PFQuery{
-        if(self.searchTerm != nil){
+    func addDynamicSearchToQuery(query: PFQuery) -> PFQuery {
+        if self.searchTerm != nil {
             println(self.searchTerm)
             query.whereKey(self.searchField, containsString: self.searchTerm)
         }
@@ -52,16 +51,17 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
     func addSortsToQuery(query: PFQuery) -> PFQuery {
         query.orderByAscending(self.sectionKey)
         
-        if(self.sortKey != nil){
+        if self.sortKey != nil {
             query.orderByAscending(self.sortKey!)
-        }else{
+        } else {
+            // when no other sort key has been specified, use the display text as key
             query.orderByAscending(self.textKey!)
         }
         
         return query
     }
     
-    func loadObjects(){
+    func loadObjects() {
         var query = self.queryForTable()
         query = self.addDynamicSearchToQuery(query)
         query = self.addSortsToQuery(query)
@@ -79,7 +79,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
                         var sectionName = object[self.sectionKey as String!] as! String!
                         var sectionList = self.sectionNames[sectionName] as Section?
                         
-                        if(sectionList == nil){
+                        if sectionList == nil {
                             sectionList = Section()
                             sectionList!.name = sectionName
                             self.sections.append(sectionList!)
@@ -96,34 +96,21 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         })
     }
     
-    func objectsWillLoad() {
-        if (self.firstLoad) {
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
-        }
-        self.refreshLoadingView()
-    }
-    
-    
-    func refreshLoadingView(){
-        
-    }
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if(tableView == self.tableView && self.searchTerm != nil){
+        if(tableView == self.tableView && self.searchTerm != nil) {
             return 0
         }
+        
         print("num sections: ")
         println(self.sections.count)
         return self.sections.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(tableView == self.tableView && self.searchTerm != nil){
+        if(tableView == self.tableView && self.searchTerm != nil) {
             return 0
         }
         
-        print("section: ")
-        println( self.sections[section].objects.count)
         return self.sections[section].objects.count
     }
     
@@ -134,7 +121,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
     override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
         var indexTitles : [String] = []
         
-        for section in self.sections{
+        for section in self.sections {
             var letterString = (section.name as NSString).substringToIndex(1)
             indexTitles.append(letterString)
         }
@@ -142,7 +129,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         return indexTitles
     }
     
-    func objectAtIndexPath(indexPath: NSIndexPath) -> PFObject{
+    func objectAtIndexPath(indexPath: NSIndexPath) -> PFObject {
         return self.sections[indexPath.section].objects[indexPath.row]
     }
     
@@ -150,7 +137,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         var cellId = "Cell"
         
         var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as! UITableViewCell!
-        if(cell == nil){
+        if cell == nil {
             cell = PFTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellId)
         }
         
@@ -161,7 +148,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         return cell
     }
     
-    func prepareCell(cell: UITableViewCell, object: PFObject) -> UITableViewCell{
+    func prepareCell(cell: UITableViewCell, object: PFObject) -> UITableViewCell {
         cell.textLabel?.text = object[self.textKey!] as! String!
         return cell
     }

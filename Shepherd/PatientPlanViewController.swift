@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PatientPlanViewController: UIViewController{
+class PatientPlanViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var totalCost: UILabel!
     
@@ -24,7 +24,7 @@ class PatientPlanViewController: UIViewController{
             self.tableView.reloadData()
             
             var cost : Double = 0
-            for object in PatientPlan.sharedInstance.treatments{
+            for object in PatientPlan.sharedInstance.treatments {
                 cost += object["Price"] as! Double!
             }
             
@@ -32,7 +32,7 @@ class PatientPlanViewController: UIViewController{
         })
     }
     
-    class PatientPlanTableViewController: UITableViewController, UITableViewDataSource{
+    class PatientPlanTableViewController: UITableViewController, UITableViewDataSource {
         override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
             return 1
         }
@@ -45,7 +45,8 @@ class PatientPlanViewController: UIViewController{
             var cellId = "Cell"
             
             var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as! UITableViewCell!
-            if(cell == nil){
+            
+            if cell == nil {
                 cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellId)
             }
             
