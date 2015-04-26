@@ -230,10 +230,10 @@
             </objects>
             <point key="canvasLocation" x="1423" y="-1589"/>
         </scene>
-        <!--Treatment Summary-->
+        <!--Prescription Summary-->
         <scene sceneID="Px0-Ea-Teg">
             <objects>
-                <viewController title="Treatment Summary" id="Ywm-aU-Bi2" customClass="TreatmentSummaryViewController" customModule="Shepherd" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Prescription Summary" id="Ywm-aU-Bi2" customClass="PrescriptionSummaryViewController" customModule="Shepherd" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GdY-ac-sQc"/>
                         <viewControllerLayoutGuide type="bottom" id="MQT-Fz-y0K"/>
@@ -271,7 +271,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="treatmentLabel" destination="74j-lg-6Th" id="wbV-hn-Res"/>
+                        <outlet property="prescriptionLabel" destination="74j-lg-6Th" id="r7X-R8-0c6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nfu-Xr-pIn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -384,6 +384,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Ywm-aU-Bi2" kind="show" identifier="summary" id="WnD-39-3ZR"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -578,5 +581,6 @@
         <segue reference="dTY-hH-5zN"/>
         <segue reference="hsz-FV-E9J"/>
         <segue reference="6IM-li-c4W"/>
+        <segue reference="WnD-39-3ZR"/>
     </inferredMetricsTieBreakers>
 </document>

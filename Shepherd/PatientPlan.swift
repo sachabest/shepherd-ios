@@ -14,29 +14,29 @@ private let _PatientPlanSharedInstance = PatientPlan()
 
 class PatientPlan {
     
-    var treatments : [PFObject] = []
+    var prescriptions : [PFObject] = []
     
     class var sharedInstance: PatientPlan {
         return _PatientPlanSharedInstance
     }
     
-    func addTreatment(treatment: PFObject) {
-        self.treatments.append(treatment)
+    func addPrescription(prescription: PFObject) {
+        self.prescriptions.append(prescription)
     }
     
-    func containsTreatment(treatment: PFObject) -> Bool {
-        return contains(self.treatments, treatment)
+    func containsPrescription(prescription: PFObject) -> Bool {
+        return contains(self.prescriptions, prescription)
     }
     
     func clearAll() {
-        self.treatments.removeAll(keepCapacity: true)
+        self.prescriptions.removeAll(keepCapacity: true)
     }
     
-    func countTreatments() -> Int {
-        return self.treatments.count
+    func countPrescriptions() -> Int {
+        return self.prescriptions.count
     }
     
     func isEmpty() -> Bool {
-        return self.countTreatments() == 0
+        return self.countPrescriptions() == 0
     }
 }

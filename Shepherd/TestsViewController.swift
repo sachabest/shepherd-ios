@@ -44,4 +44,20 @@ class TestsViewController: SectionedParseTableViewController {
                 self.loadObjects()
         })
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "summary" {
+            let controller = segue.destinationViewController as! PrescriptionSummaryViewController
+            
+            if self.searchDisplayController!.active {
+                if let indexPath = self.searchDisplayController?.searchResultsTableView.indexPathForSelectedRow() {
+                    controller.prescription = self.objectAtIndexPath(indexPath) as PFObject!
+                }
+            } else {
+                if let indexPath = self.tableView.indexPathForSelectedRow(){
+                    controller.prescription = self.objectAtIndexPath(indexPath) as PFObject!
+                }
+            }
+        }
+    }
 }
