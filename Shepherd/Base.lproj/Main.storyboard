@@ -92,6 +92,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Treatment Plan" id="nI5-Fg-mTt">
+                        <barButtonItem key="leftBarButtonItem" title="Clear" id="RZI-as-aj7">
+                            <connections>
+                                <action selector="clearButtonClicked:" destination="JQv-Pc-I8m" id="xFz-AL-ofx"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="LpZ-Fv-hyE">
                             <connections>
                                 <action selector="shareButtonClicked:" destination="JQv-Pc-I8m" id="8nw-go-byD"/>

@@ -22,6 +22,10 @@ class PatientPlanViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        self.updateUI()
+    }
+    
+    func updateUI() {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.tableView.reloadData()
             
@@ -47,6 +51,21 @@ class PatientPlanViewController: UIViewController {
         textToShare += "<br>Created with Shepherd, a <a href=\"https://www.seas.upenn.edu/~cdmurphy/cis350/\">Penn CIS 350</a> Project by <a href=\"http://rohunbansal.com/\">Rohun Bansal</a>, <a href=\"https://www.linkedin.com/pub/hannah-cutler/83/743/b6b\">Hannah Cutler</a>, and <a href=\"https://www.linkedin.com/pub/reuben-abraham/98/482/9a3\">Reuben Abraham</a></body></html>"
         
         return textToShare
+    }
+    
+    @IBAction func clearButtonClicked(sender: UIButton) {
+        let alertController = UIAlertController(title: "Clear Patient Plan?", message: "Cannot be undone.", preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            PatientPlan.sharedInstance.clearAll()
+            self.updateUI()
+        }
+        alertController.addAction(OKAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     @IBAction func shareButtonClicked(sender: UIButton) {
