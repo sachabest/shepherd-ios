@@ -38,13 +38,19 @@ class ChiefComplaintViewController: SectionedParseTableViewController  {
     }
     
     // MARK: - Segues
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "show" {
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let object = self.objectAtIndexPath(indexPath) as PFObject!
-                let controller = segue.destinationViewController as! DiagnosisQuestionViewController
-                controller.detailItem = object
+            let controller = segue.destinationViewController as! DiagnosisQuestionViewController
+            
+            if self.searchDisplayController!.active {
+                if let indexPath = self.searchDisplayController?.searchResultsTableView.indexPathForSelectedRow() {
+                    controller.detailItem = self.objectAtIndexPath(indexPath) as PFObject!
+                }
+            } else {
+                if let indexPath = self.tableView.indexPathForSelectedRow(){
+                    controller.detailItem = self.objectAtIndexPath(indexPath) as PFObject!
+                }
             }
         }
     }

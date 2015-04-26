@@ -131,7 +131,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(self.cellId) as! UITableViewCell!
+        var cell = self.tableView.dequeueReusableCellWithIdentifier(self.cellId) as! UITableViewCell!
         
         if cell == nil {
             cell = PFTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: self.cellId)
@@ -148,10 +148,6 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         cell.textLabel?.text = object[self.textKey!] as! String!
         
         return cell
-    }
-    
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        // NOOP
     }
     
     // UISearchBarDelegate methods

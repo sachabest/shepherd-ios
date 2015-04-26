@@ -28,13 +28,19 @@ class DiagnosisViewController: SectionedParseTableViewController {
         
         return query
     }
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "treatment" {
-            if let indexPath = self.tableView.indexPathForSelectedRow(){
-                let object = self.objectAtIndexPath(indexPath) as PFObject!
-                let controller = segue.destinationViewController as! TreatmentViewController
-                controller.diagnosis = object
+            let controller = segue.destinationViewController as! TreatmentViewController
+            
+            if self.searchDisplayController!.active {
+                if let indexPath = self.searchDisplayController?.searchResultsTableView.indexPathForSelectedRow() {
+                    controller.diagnosis = self.objectAtIndexPath(indexPath) as PFObject!
+                }
+            } else {
+                if let indexPath = self.tableView.indexPathForSelectedRow(){
+                    controller.diagnosis = self.objectAtIndexPath(indexPath) as PFObject!
+                }
             }
         }
     }

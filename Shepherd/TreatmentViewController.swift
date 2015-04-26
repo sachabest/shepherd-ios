@@ -46,10 +46,16 @@ class TreatmentViewController: SectionedParseTableViewController{
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "summary" {
-            if let indexPath = self.tableView.indexPathForSelectedRow(){
-                let object = self.objectAtIndexPath(indexPath) as PFObject!
-                let controller = segue.destinationViewController as! TreatmentSummaryViewController
-                controller.treatment = object
+            let controller = segue.destinationViewController as! TreatmentSummaryViewController
+            
+            if self.searchDisplayController!.active {
+                if let indexPath = self.searchDisplayController?.searchResultsTableView.indexPathForSelectedRow() {
+                    controller.treatment = self.objectAtIndexPath(indexPath) as PFObject!
+                }
+            } else {
+                if let indexPath = self.tableView.indexPathForSelectedRow(){
+                    controller.treatment = self.objectAtIndexPath(indexPath) as PFObject!
+                }
             }
         }
     }
