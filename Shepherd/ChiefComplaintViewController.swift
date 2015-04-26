@@ -11,25 +11,21 @@
 
 import Parse
 
-
-class ChiefComplaintViewController: PFQueryTableViewController  {
+class ChiefComplaintViewController: SectionedParseTableViewController  {
     var currentUser: PFUser? = nil
-    var searchTerm: String!
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         self.parseClassName = "Complaint"
         self.textKey = "Name"
-        self.pullToRefreshEnabled = true
-        self.paginationEnabled = false
+        self.sectionKey = "Category"
     }
 
     override func viewDidAppear(animated: Bool) {
         self.currentUser = PFUser.currentUser()
-        if self.currentUser != nil {
-            // TODO
-        } else {
+        
+        if self.currentUser == nil {
             var logInController = PFLogInViewController()
             logInController.delegate = self
             logInController.signUpController?.delegate = self
@@ -39,30 +35,6 @@ class ChiefComplaintViewController: PFQueryTableViewController  {
                 | PFLogInFields.PasswordForgotten)
             self.presentViewController(logInController, animated:animated, completion: nil)
         }
-    }
-
-    override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName!)
-
-        if(self.searchTerm != nil){
-            query.whereKey("canonicalName", containsString: self.searchTerm.lowercaseString)
-        }
-        
-        query.orderByAscending(self.textKey!)
-        return query
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject!) -> PFTableViewCell? {
-        var cellId = "Cell"
-    
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as! PFTableViewCell!
-        if(cell == nil){
-            cell = PFTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellId)
-        }
-        
-        cell?.textLabel?.text = object[self.textKey!] as! String!
-
-        return cell
     }
     
     // MARK: - Segues
@@ -97,17 +69,5 @@ extension ChiefComplaintViewController: PFSignUpViewControllerDelegate {
     
     func signUpViewControllerDidCancelSignUp(signUpController: PFSignUpViewController) -> Void {
         // NOOP
-    }
-}
-
-extension ChiefComplaintViewController: UISearchBarDelegate {
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchTerm = searchText
-        self.loadObjects()
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        self.searchTerm = nil
-        self.loadObjects()
     }
 }
