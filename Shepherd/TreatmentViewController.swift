@@ -10,6 +10,7 @@ import Parse
 
 class TreatmentViewController: SectionedParseTableViewController{
     var diagnosis: PFObject!
+    let availableSortOptions = ["Name", "Price"]
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,8 +35,8 @@ class TreatmentViewController: SectionedParseTableViewController{
     }
     
     @IBAction func sortList(sender: UIButton) {
-        UIActionSheet.showInView(self.view, withTitle: "Select Sort Method", cancelButtonTitle: "Cancel", destructiveButtonTitle: nil
-            , otherButtonTitles: ["Name", "Price"], tapBlock: {(actionSheet: UIActionSheet, buttonIndex: Int) in
+        UIActionSheet.showInView(self.view, withTitle: "Select Sort Method", cancelButtonTitle: "Cancel", destructiveButtonTitle: nil,
+            otherButtonTitles: self.availableSortOptions, tapBlock: {(actionSheet: UIActionSheet, buttonIndex: Int) in
                 self.sortKey = actionSheet.buttonTitleAtIndex(buttonIndex)
                 self.loadObjects()
         })
