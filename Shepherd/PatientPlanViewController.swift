@@ -59,11 +59,11 @@ class PatientPlanViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         alertController.addAction(cancelAction)
         
-        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+        let destroyAction = UIAlertAction(title: "Clear", style: .Destructive) { (action) in
             PatientPlan.sharedInstance.clearAll()
             self.updateUI()
         }
-        alertController.addAction(OKAction)
+        alertController.addAction(destroyAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }
