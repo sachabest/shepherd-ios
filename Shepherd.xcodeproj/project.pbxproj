@@ -105,20 +105,20 @@
 			isa = PBXGroup;
 			children = (
 				1620AEC11AC22CA9006F6AAE /* AppDelegate.swift */,
-				1620AEC61AC22CA9006F6AAE /* ChiefComplaintViewController.swift */,
 				04A8B70D1ADB71E7002F3909 /* PatientPlan.swift */,
+				165196561ADB3F9400CEE6E2 /* SectionedParseTableViewController.swift */,
+				1620AEC61AC22CA9006F6AAE /* ChiefComplaintViewController.swift */,
 				1620AEC81AC22CA9006F6AAE /* DiagnosisQuestionViewController.swift */,
-				1620AECA1AC22CA9006F6AAE /* Main.storyboard */,
-				1620AECD1AC22CA9006F6AAE /* Images.xcassets */,
-				1620AECF1AC22CA9006F6AAE /* LaunchScreen.xib */,
-				1620AEC31AC22CA9006F6AAE /* Shepherd.xcdatamodeld */,
-				1620AEBF1AC22CA9006F6AAE /* Supporting Files */,
 				161AE3311AC8D4B80006D634 /* TestsViewController.swift */,
 				161AE3331AC8D52C0006D634 /* DiagnosisViewController.swift */,
 				16877BF71AD3685F00123BA5 /* TreatmentViewController.swift */,
 				1600F1111ADB705C00732B5B /* TreatmentSummaryViewController.swift */,
 				16A697C11ADB790900D60049 /* PatientPlanViewController.swift */,
-				165196561ADB3F9400CEE6E2 /* SectionedParseTableViewController.swift */,
+				1620AECD1AC22CA9006F6AAE /* Images.xcassets */,
+				1620AECA1AC22CA9006F6AAE /* Main.storyboard */,
+				1620AECF1AC22CA9006F6AAE /* LaunchScreen.xib */,
+				1620AEC31AC22CA9006F6AAE /* Shepherd.xcdatamodeld */,
+				1620AEBF1AC22CA9006F6AAE /* Supporting Files */,
 			);
 			path = Shepherd;
 			sourceTree = "<group>";

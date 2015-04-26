@@ -1,6 +1,9 @@
 //
-//  MasterViewController.swift
+//  ChiefComplaintViewController.swift
 //  Shepherd
+//
+//  The UIViewController that manages the main app screen that allows users to select a Chief Complaint and,
+//  if not signed in, prompts them to either sign in or make an account.
 //
 //  Created by Rohun Bansal on 3/24/15.
 //  Copyright (c) 2015 Shepherd. All rights reserved.
@@ -85,6 +88,7 @@ extension ChiefComplaintViewController : PFLogInViewControllerDelegate {
         // NOOP
     }
 }
+
 
 extension ChiefComplaintViewController: PFSignUpViewControllerDelegate {
     func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) -> Void {
