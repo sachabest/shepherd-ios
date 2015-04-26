@@ -43,15 +43,3 @@ class TestsViewController: SectionedParseTableViewController {
         })
     }
 }
-
-extension TestsViewController: UISearchBarDelegate {
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchTerm = searchText
-        self.loadObjects()
-    }
-
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        self.searchTerm = nil
-        self.loadObjects()
-    }
-}

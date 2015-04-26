@@ -9,8 +9,9 @@
 import Parse
 
 class TreatmentSummaryViewController: UIViewController {
-    var treatment: PFObject!
     @IBOutlet var treatmentLabel: UILabel!
+    
+    var treatment: PFObject!
     
     @IBAction func addToPlan(sender: UIButton) {
         let alert = UIAlertView()

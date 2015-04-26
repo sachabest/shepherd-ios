@@ -116,9 +116,9 @@
 				161AE3311AC8D4B80006D634 /* TestsViewController.swift */,
 				161AE3331AC8D52C0006D634 /* DiagnosisViewController.swift */,
 				16877BF71AD3685F00123BA5 /* TreatmentViewController.swift */,
-				165196561ADB3F9400CEE6E2 /* SectionedParseTableViewController.swift */,
 				1600F1111ADB705C00732B5B /* TreatmentSummaryViewController.swift */,
 				16A697C11ADB790900D60049 /* PatientPlanViewController.swift */,
+				165196561ADB3F9400CEE6E2 /* SectionedParseTableViewController.swift */,
 			);
 			path = Shepherd;
 			sourceTree = "<group>";

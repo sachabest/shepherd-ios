@@ -18,8 +18,7 @@ class TreatmentViewController: SectionedParseTableViewController{
         self.sectionKey = "Category"
     }
     
-    override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName)
+    override func addSearchToQuery(query: PFQuery) -> PFQuery {
         if(self.diagnosis != nil){
             query.whereKey("Diagnosis", equalTo: self.diagnosis)
         }
@@ -50,17 +49,5 @@ class TreatmentViewController: SectionedParseTableViewController{
                 controller.treatment = object
             }
         }
-    }
-}
-
-extension TreatmentViewController: UISearchBarDelegate {
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchTerm = searchText
-        self.loadObjects()
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        self.searchTerm = nil
-        self.loadObjects()
     }
 }

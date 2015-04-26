@@ -19,18 +19,12 @@ class DiagnosisViewController: SectionedParseTableViewController {
         self.sectionKey = "Category"
     }
     
-    override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName)
+    override func addSearchToQuery(query: PFQuery) -> PFQuery {
         if(self.complaint != nil){
             query.whereKey("Complaint", equalTo: self.complaint)
         }
         
         return query
-    }
-    
-    override func prepareCell(cell: UITableViewCell, object: PFObject) -> UITableViewCell {
-        cell.textLabel?.text = object[self.textKey!] as! String!
-        return cell
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -41,17 +35,5 @@ class DiagnosisViewController: SectionedParseTableViewController {
                 controller.diagnosis = object
             }
         }
-    }
-}
-
-extension DiagnosisViewController: UISearchBarDelegate {
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchTerm = searchText
-        self.loadObjects()
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        self.searchTerm = nil
-        self.loadObjects()
     }
 }

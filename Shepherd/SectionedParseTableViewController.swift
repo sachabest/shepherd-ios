@@ -8,19 +8,22 @@
 
 import Parse
 
-class SectionedParseTableViewController: UITableViewController, UITableViewDataSource {
-    var searchTerm: String!
-    var searchField: String = "canonicalName"
-    
+class SectionedParseTableViewController: UITableViewController, UITableViewDataSource, UISearchBarDelegate {
     var parseClassName : String = ""
-    var objects : [PFObject] = []
-    
     var textKey: String!
     var sortKey: String!
+    var searchField: String = "canonicalName"
     var sectionKey: String!
+    
+    var searchTerm: String!
+    
+    var objects: [PFObject] = []
+    var filtered: [PFObject] = []
     
     var sections: [Section] = []
     var sectionNames: [String: Section] = [:]
+    
+    let cellId = "Cell"
     
     class Section {
         var objects: [PFObject] = []
@@ -39,9 +42,8 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         return query
     }
     
-    func addDynamicSearchToQuery(query: PFQuery) -> PFQuery {
+    func addSearchToQuery(query: PFQuery) -> PFQuery {
         if self.searchTerm != nil {
-            println(self.searchTerm)
             query.whereKey(self.searchField, containsString: self.searchTerm)
         }
         
@@ -61,9 +63,30 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         return query
     }
     
+    func createSections(sourceObjects: [PFObject]) {
+        if(self.sectionKey != nil){
+            self.sectionNames.removeAll(keepCapacity: true)
+            self.sections.removeAll(keepCapacity: true)
+            
+            for object in sourceObjects{
+                var sectionName = object[self.sectionKey as String!] as! String!
+                var sectionList = self.sectionNames[sectionName] as Section?
+                
+                if sectionList == nil {
+                    sectionList = Section()
+                    sectionList!.name = sectionName
+                    self.sections.append(sectionList!)
+                    self.sectionNames[sectionName] = sectionList
+                }
+                
+                sectionList!.objects.append(object)
+            }
+        }
+    }
+    
     func loadObjects() {
         var query = self.queryForTable()
-        query = self.addDynamicSearchToQuery(query)
+        query = self.addSearchToQuery(query)
         query = self.addSortsToQuery(query)
         
         query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
@@ -71,46 +94,18 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
                 self.objects.removeAll(keepCapacity: true)
                 self.objects.extend(foundObjects)
                 
-                if(self.sectionKey != nil){
-                    self.sectionNames.removeAll(keepCapacity: true)
-                    self.sections.removeAll(keepCapacity: true)
-                    
-                    for object in self.objects{
-                        var sectionName = object[self.sectionKey as String!] as! String!
-                        var sectionList = self.sectionNames[sectionName] as Section?
-                        
-                        if sectionList == nil {
-                            sectionList = Section()
-                            sectionList!.name = sectionName
-                            self.sections.append(sectionList!)
-                            self.sectionNames[sectionName] = sectionList
-                        }
-                        
-                        sectionList!.objects.append(object)
-                    }
-                }
+                self.createSections(self.objects)
                 
-                println(self.sections.count)
                 self.tableView.reloadData()
             }
         })
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if(tableView == self.tableView && self.searchTerm != nil) {
-            return 0
-        }
-        
-        print("num sections: ")
-        println(self.sections.count)
         return self.sections.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(tableView == self.tableView && self.searchTerm != nil) {
-            return 0
-        }
-        
         return self.sections[section].objects.count
     }
     
@@ -134,11 +129,10 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cellId = "Cell"
+        var cell = tableView.dequeueReusableCellWithIdentifier(self.cellId) as! UITableViewCell!
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellId) as! UITableViewCell!
         if cell == nil {
-            cell = PFTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: cellId)
+            cell = PFTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: self.cellId)
         }
         
         var object = self.objectAtIndexPath(indexPath)
@@ -150,10 +144,29 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
     
     func prepareCell(cell: UITableViewCell, object: PFObject) -> UITableViewCell {
         cell.textLabel?.text = object[self.textKey!] as! String!
+        
         return cell
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         // NOOP
+    }
+    
+    // UISearchBarDelegate methods
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        // case-insensitive search on self.searchField
+        
+        self.filtered = self.objects.filter({(object: PFObject) -> Bool in
+            let stringToSearch: NSString = object[self.searchField] as! String!
+            let range = stringToSearch.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            return range.location != NSNotFound
+        })
+
+        self.createSections(self.filtered)
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        self.createSections(self.objects)
     }
 }
