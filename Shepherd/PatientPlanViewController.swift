@@ -2,7 +2,7 @@
 //  PatientPlanViewController.swift
 //  Shepherd
 //
-//  TODO
+//  PatientPlanViewController is a UIViewController that displays the list of treatments/tests the patient ordered.
 //
 //  Created by Rohun Bansal on 4/13/15.
 //  Copyright (c) 2015 Shepherd. All rights reserved.

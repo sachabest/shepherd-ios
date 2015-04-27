@@ -2,7 +2,8 @@
 //  TreatmentViewController.swift
 //  Shepherd
 //
-//  TODO
+//  This class is an extended class of a SectionedParseTableViewController that displays a list of treatments
+//  sorted alphabetically and sectioned by beginning letter.
 //
 //  Created by Rohun Bansal on 4/6/15.
 //  Copyright (c) 2015 Shepherd. All rights reserved.
