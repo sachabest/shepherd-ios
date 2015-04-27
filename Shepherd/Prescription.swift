@@ -2,6 +2,9 @@
 //  Prescription.swift
 //  Shepherd
 //
+//  This class is part of the data model, representing a combination of a treatment or test,
+//  an optional variant, and a quantity.
+//
 //  Created by Rohun Bansal on 4/27/15.
 //  Copyright (c) 2015 Shepherd. All rights reserved.
 //
