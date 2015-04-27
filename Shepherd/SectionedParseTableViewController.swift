@@ -2,7 +2,9 @@
 //  SectionedParseTableViewController.swift
 //  Shepherd
 //
-//  TODO
+//  SectionedParseTableViewController is used as an extension of UITableViewController. This class
+//  organizes all of the items of the table view and sorts them alphabetically and creates sections
+//  by alphabetical organization.
 //
 //  Created by Rohun Bansal on 4/12/15.
 //  Copyright (c) 2015 Shepherd. All rights reserved.
