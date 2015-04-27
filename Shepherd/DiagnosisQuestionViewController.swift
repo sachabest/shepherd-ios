@@ -2,8 +2,9 @@
 //  DetailViewController.swift
 //  Shepherd
 //
-//  Once a user has selected a Chief Complain, this view controller asks the user if they have already received
-//  a diagnosis, directing them to the correct view (diagnoses or tests) depending on their answer.
+//  Once a user has selected a Chief Complain, this view controller asks
+//  the user if they have already received a diagnosis, directing them to 
+//  the correct view (diagnoses or tests) depending on their answer.
 //
 //  Created by Rohun Bansal on 3/24/15.
 //  Copyright (c) 2015 Shepherd. All rights reserved.

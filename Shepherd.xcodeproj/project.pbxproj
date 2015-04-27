@@ -22,6 +22,7 @@
 		165196571ADB3F9400CEE6E2 /* SectionedParseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165196561ADB3F9400CEE6E2 /* SectionedParseTableViewController.swift */; };
 		16877BF81AD3685F00123BA5 /* TreatmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16877BF71AD3685F00123BA5 /* TreatmentViewController.swift */; };
 		16A697C21ADB790900D60049 /* PatientPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A697C11ADB790900D60049 /* PatientPlanViewController.swift */; };
+		16FA97B41AEDEC3A0015C8F4 /* Prescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FA97B31AEDEC3A0015C8F4 /* Prescription.swift */; };
 		71E6EE7B82FBAFC63AB41C0A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9815EA65F89A99D3D89B9B96 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		165196561ADB3F9400CEE6E2 /* SectionedParseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionedParseTableViewController.swift; sourceTree = "<group>"; };
 		16877BF71AD3685F00123BA5 /* TreatmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreatmentViewController.swift; sourceTree = "<group>"; };
 		16A697C11ADB790900D60049 /* PatientPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientPlanViewController.swift; sourceTree = "<group>"; };
+		16FA97B31AEDEC3A0015C8F4 /* Prescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prescription.swift; sourceTree = "<group>"; };
 		9114E8ECBB8FBFE8C44A2F6F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9815EA65F89A99D3D89B9B96 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF00D45B3A5219014FA9709D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				1620AEC11AC22CA9006F6AAE /* AppDelegate.swift */,
 				04A8B70D1ADB71E7002F3909 /* PatientPlan.swift */,
+				16FA97B31AEDEC3A0015C8F4 /* Prescription.swift */,
 				165196561ADB3F9400CEE6E2 /* SectionedParseTableViewController.swift */,
 				1620AEC61AC22CA9006F6AAE /* ChiefComplaintViewController.swift */,
 				1620AEC81AC22CA9006F6AAE /* DiagnosisQuestionViewController.swift */,
@@ -303,6 +306,7 @@
 				1620AEC51AC22CA9006F6AAE /* Shepherd.xcdatamodeld in Sources */,
 				04A8B70E1ADB71E7002F3909 /* PatientPlan.swift in Sources */,
 				1620AEC21AC22CA9006F6AAE /* AppDelegate.swift in Sources */,
+				16FA97B41AEDEC3A0015C8F4 /* Prescription.swift in Sources */,
 				165196571ADB3F9400CEE6E2 /* SectionedParseTableViewController.swift in Sources */,
 				1600F1121ADB705C00732B5B /* PrescriptionSummaryViewController.swift in Sources */,
 				161AE3341AC8D52C0006D634 /* DiagnosisViewController.swift in Sources */,

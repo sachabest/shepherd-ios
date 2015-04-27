@@ -31,7 +31,7 @@ class PatientPlanViewController: UIViewController {
             
             var cost : Double = 0
             for object in PatientPlan.sharedInstance.prescriptions {
-                cost += object["Price"] as! Double!
+                cost += object.totalPrice()
             }
             
             self.totalCost.text = cost.format(".2")
@@ -40,10 +40,10 @@ class PatientPlanViewController: UIViewController {
     
     func constructShareText() -> String {
         var textToShare = "<html><body><p><h1>Patient Plan</h1></p>" +
-        "<table style=\"border-collapse: collapse; border: 1px solid black\"><thead><tr><th style=\"text-align: left; border: 1px solid black; padding: .25em\">Prescription</th><th style=\"text-align: left; border: 1px solid black; padding: .25em\">Type</th><th style=\"text-align: right; border: 1px solid black; padding: .25em\">Cost</th></tr></thead>"
+        "<table style=\"border-collapse: collapse; border: 1px solid black\"><thead><tr><th style=\"text-align: left; border: 1px solid black; padding: .25em\">Prescription</th><th style=\"text-align: left; border: 1px solid black; padding: .25em\">Type</th><th style=\"text-align: left; border: 1px solid black; padding: .25em\">Variant</th><th style=\"text-align: right; border: 1px solid black; padding: .25em\">Quantity</th><th style=\"text-align: right; border: 1px solid black; padding: .25em\">Total Cost</th></tr></thead>"
         
         for prescription in PatientPlan.sharedInstance.prescriptions {
-            textToShare += "<tr><td style=\"text-align: left; border: 1px solid black; padding: .25em\">" + (prescription["Name"] as! String!) + "</td><td style=\"text-align: left; border: 1px solid black; padding: .25em\">" + prescription.parseClassName + "</td><td style=\"text-align: right; border: 1px solid black; padding: .25em\">" + ("$" + (prescription["Price"] as! Double).format(".2")) + "</td></tr>"
+            textToShare += "<tr><td style=\"text-align: left; border: 1px solid black; padding: .25em\">" + prescription.getName() + "</td><td style=\"text-align: left; border: 1px solid black; padding: .25em\">" + prescription.getType() + "</td><td style=\"text-align: left; border: 1px solid black; padding: .25em\">" + prescription.getVariant() + "</td><td style=\"text-align: right; border: 1px solid black; padding: .25em\">" + prescription.quantity.description + "</td><td style=\"text-align: right; border: 1px solid black; padding: .25em\">" + ("$" + prescription.totalPrice().format(".2")) + "</td></tr>"
         }
         
         textToShare += "<tbody></tbody></table>"
@@ -110,8 +110,9 @@ class PatientPlanViewController: UIViewController {
             
             var object = PatientPlan.sharedInstance.prescriptions[indexPath.row]
             
-            cell.textLabel?.text = object["Name"] as! String!
-            cell.detailTextLabel?.text = "$" + (object["Price"] as! Double).format(".2")
+            cell.textLabel?.text = object.getName()
+            cell.detailTextLabel?.text = "$" + object.totalPrice().format(".2") + " | " + object.quantity.description
+                + "x of " + object.getVariant() + " at $" + object.individualPrice().format(".2") + " each"
             
             return cell
         }

@@ -13,18 +13,17 @@ import Parse
 private let _PatientPlanSharedInstance = PatientPlan()
 
 class PatientPlan {
-    
-    var prescriptions : [PFObject] = []
+    var prescriptions : [Prescription] = []
     
     class var sharedInstance: PatientPlan {
         return _PatientPlanSharedInstance
     }
     
-    func addPrescription(prescription: PFObject) {
+    func addPrescription(prescription: Prescription) {
         self.prescriptions.append(prescription)
     }
     
-    func containsPrescription(prescription: PFObject) -> Bool {
+    func containsPrescription(prescription: Prescription) -> Bool {
         return contains(self.prescriptions, prescription)
     }
     
@@ -40,3 +39,4 @@ class PatientPlan {
         return self.countPrescriptions() == 0
     }
 }
+
