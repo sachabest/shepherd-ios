@@ -9,8 +9,6 @@
 //  Copyright (c) 2015 Shepherd. All rights reserved.
 //
 
-import Parse
-
 class TestsViewController: SectionedParseTableViewController {
     var complaint: PFObject!
     

@@ -14,4 +14,5 @@
 
 #import <Bolts/Bolts.h>
 #import <ParseUI/ParseUI.h>
+#import <Parse/Parse.h>
 #import <UIActionSheet+Blocks/UIActionSheet+Blocks.h>

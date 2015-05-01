@@ -10,8 +10,6 @@
 //  Copyright (c) 2015 Shepherd. All rights reserved.
 //
 
-import Parse
-
 class ChiefComplaintViewController: SectionedParseTableViewController  {
     var currentUser: PFUser? = nil
 

@@ -10,8 +10,6 @@
 //  Copyright (c) 2015 Shepherd. All rights reserved.
 //
 
-import Parse
-
 class DiagnosisQuestionViewController: UIViewController {
     var detailItem: PFObject! {
         didSet {
