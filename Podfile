@@ -1,3 +1,3 @@
-pod 'Parse', '1.7.1'
+pod 'Parse'
 pod 'ParseUI'
 pod 'UIActionSheet+Blocks'

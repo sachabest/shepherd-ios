@@ -10,8 +10,6 @@
 //  Copyright (c) 2015 Shepherd. All rights reserved.
 //
 
-import Parse
-
 class SectionedParseTableViewController: UITableViewController, UITableViewDataSource, UISearchBarDelegate {
     var parseClassName : String = ""
     var textKey: String!

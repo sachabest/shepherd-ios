@@ -9,7 +9,6 @@
 //  Copyright (c) 2015 Shepherd. All rights reserved.
 //
 
-import Parse
 import UIKit
 
 class DiagnosisViewController: SectionedParseTableViewController {

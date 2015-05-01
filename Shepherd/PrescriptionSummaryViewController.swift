@@ -9,8 +9,6 @@
 //  Copyright (c) 2015 Shepherd. All rights reserved.
 //
 
-import Parse
-
 class PrescriptionSummaryViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet var prescriptionLabel: UILabel!
     @IBOutlet var picker: UIPickerView!
