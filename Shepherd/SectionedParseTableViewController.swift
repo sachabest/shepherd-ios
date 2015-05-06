@@ -37,6 +37,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         self.loadObjects()
     }
     
+    // takes in the parseClassName specified by subclasses and creates the base Parse Query and default sort order
     func queryForTable() -> PFQuery {
         var query = PFQuery(className: self.parseClassName)
         
@@ -44,6 +45,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         return query
     }
     
+    // if the search term is set, add it as a filter to the Parse Query
     func addSearchToQuery(query: PFQuery) -> PFQuery {
         if self.searchTerm != nil {
             query.whereKey(self.searchField, containsString: self.searchTerm)
@@ -52,6 +54,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         return query
     }
     
+    // if custom sorts are specified, add them to the Parse Query
     func addSortsToQuery(query: PFQuery) -> PFQuery {
         query.orderByAscending(self.sectionKey)
         
@@ -65,6 +68,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         return query
     }
     
+    // parse the resulting PFObjects from parse and section into sections for the table
     func createSections(sourceObjects: [PFObject]) {
         if(self.sectionKey != nil){
             self.sectionNames.removeAll(keepCapacity: true)
@@ -86,6 +90,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         }
     }
     
+    // create the full Parse Query, fetch the resulting objects from Parse and process them
     func loadObjects() {
         var query = self.queryForTable()
         query = self.addSearchToQuery(query)
@@ -126,10 +131,12 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         return indexTitles
     }
     
+    // utility method to pull the correct object from the section hierarchy
     func objectAtIndexPath(indexPath: NSIndexPath) -> PFObject {
         return self.sections[indexPath.section].objects[indexPath.row]
     }
     
+    // provides UITableViewCells for viewing, set up to display the correct Parse Objects
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = self.tableView.dequeueReusableCellWithIdentifier(self.cellId) as! UITableViewCell!
         
@@ -144,6 +151,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         return cell
     }
     
+    // method for subclasses to override to setup the table cells however they like
     func prepareCell(cell: UITableViewCell, object: PFObject) -> UITableViewCell {
         cell.textLabel?.text = object[self.textKey!] as! String!
         
@@ -152,6 +160,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
     
     // UISearchBarDelegate methods
     
+    // when the searchbar updates, create filtered sections/parse objects and display them instead
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         // case-insensitive search on self.searchField
         
@@ -164,6 +173,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
         self.createSections(self.filtered)
     }
     
+    // when searchbar closed, switch back to the full list
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         self.createSections(self.objects)
     }

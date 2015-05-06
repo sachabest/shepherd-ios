@@ -12,6 +12,7 @@
 class TestsViewController: SectionedParseTableViewController {
     var complaint: PFObject!
     
+    // setup variables for SectionedParseTableViewController
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.parseClassName = "Test"
@@ -19,15 +20,16 @@ class TestsViewController: SectionedParseTableViewController {
         self.sectionKey = "Category"
     }
     
-    override func queryForTable() -> PFQuery {
-        var query = PFQuery(className: self.parseClassName)
+    // filter only tests that match chief complain, if set
+    override func addSearchToQuery(query: PFQuery) -> PFQuery {
         if(self.complaint != nil){
             query.whereKey("Complaint", equalTo: self.complaint)
         }
-
+        
         return query
     }
     
+    // override to provide cell styling and formatting
     override func prepareCell(cell: UITableViewCell, object: PFObject) -> UITableViewCell {
         cell.textLabel?.text = object[self.textKey!] as! String!
         cell.detailTextLabel?.text = "$" + (object["Price"] as! Double).format(".2")
@@ -36,6 +38,7 @@ class TestsViewController: SectionedParseTableViewController {
 
     }
     
+    // allow user to select how they would like to sort the list
     @IBAction func sortList(sender: UIButton) {
         UIActionSheet.showInView(self.view, withTitle: "Select Sort Method", cancelButtonTitle: "Cancel", destructiveButtonTitle: nil,
             otherButtonTitles: ["Name", "Price"], tapBlock: {(actionSheet: UIActionSheet, buttonIndex: Int) in
@@ -44,6 +47,7 @@ class TestsViewController: SectionedParseTableViewController {
         })
     }
     
+    // when test selected, prepare the prescription summary with the correct test
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "summary" {
             let controller = segue.destinationViewController as! PrescriptionSummaryViewController

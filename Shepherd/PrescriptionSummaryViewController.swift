@@ -25,6 +25,7 @@ class PrescriptionSummaryViewController: UIViewController, UIPickerViewDataSourc
     
     var prescription: PFObject!
     
+    // adds the selected treatment/test, variant, and quantity to the patient plan if a matching prescription has not been added already
     @IBAction func addToPlan(sender: UIButton) {
         var prescriptionBundle = Prescription()
         prescriptionBundle.prescription = self.prescription
@@ -51,10 +52,12 @@ class PrescriptionSummaryViewController: UIViewController, UIPickerViewDataSourc
         alert.show()
     }
     
+    // when the stepper plus/minus is used, update the displayed quantity
     @IBAction func stepperValueChanged(sender: UIStepper) {
         self.quantity = Int(sender.value)
     }
     
+    // use the supplied test/treatment to set up the view and load associated viariants
     override func viewWillAppear(animated: Bool) {
         self.prescriptionLabel.text = self.prescription["Name"] as! String!
         self.quantity = 1
@@ -85,7 +88,8 @@ class PrescriptionSummaryViewController: UIViewController, UIPickerViewDataSourc
         
         return self.variants.count
     }
-
+    
+    // supply the picker view with a formatted text of the variants
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
         if self.variants == nil || self.variants.count == 0 {
             return "Default | $" + (self.prescription["Price"] as! Double!).format(".2")

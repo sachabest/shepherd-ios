@@ -18,6 +18,7 @@ class DiagnosisQuestionViewController: UIViewController {
         }
     }
 
+    // when yes or no is selected prepare the diagnosis or tests view controllers with the appropriate cheif complain to filter by
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "yesDiagnosis" {
             var diagnosisViewController : DiagnosisViewController = segue.destinationViewController as! DiagnosisViewController

@@ -13,6 +13,7 @@
 class ChiefComplaintViewController: SectionedParseTableViewController  {
     var currentUser: PFUser? = nil
 
+    // setup variables for the SectionedParseTableViewController
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -21,6 +22,7 @@ class ChiefComplaintViewController: SectionedParseTableViewController  {
         self.sectionKey = "Category"
     }
 
+    // if user not signed in, present registration/sign in view
     override func viewDidAppear(animated: Bool) {
         self.currentUser = PFUser.currentUser()
         
@@ -38,6 +40,7 @@ class ChiefComplaintViewController: SectionedParseTableViewController  {
     
     // MARK: - Segues
     
+    // when segue triggerd to the diagnosis or not question, pass along the chief complaint
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "show" {
             let controller = segue.destinationViewController as! DiagnosisQuestionViewController
@@ -55,7 +58,7 @@ class ChiefComplaintViewController: SectionedParseTableViewController  {
     }
 }
 
-
+// handle user login success/failure from Parse
 extension ChiefComplaintViewController : PFLogInViewControllerDelegate {
     func logInViewController(controller: PFLogInViewController, didLogInUser user: PFUser) -> Void {
         dismissViewControllerAnimated(true, completion: nil)
@@ -66,7 +69,7 @@ extension ChiefComplaintViewController : PFLogInViewControllerDelegate {
     }
 }
 
-
+// handle user registration success/failure from Parse
 extension ChiefComplaintViewController: PFSignUpViewControllerDelegate {
     func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) -> Void {
         dismissViewControllerAnimated(true, completion: nil)

@@ -14,6 +14,7 @@ import UIKit
 class DiagnosisViewController: SectionedParseTableViewController {
     var complaint: PFObject!
 
+    // setup variables for SectionedParseTableViewController
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.parseClassName = "Diagnosis"
@@ -21,6 +22,7 @@ class DiagnosisViewController: SectionedParseTableViewController {
         self.sectionKey = "Category"
     }
     
+    // filter only to diagnosis related to the chief complaint, if set
     override func addSearchToQuery(query: PFQuery) -> PFQuery {
         if(self.complaint != nil){
             query.whereKey("Complaint", equalTo: self.complaint)
@@ -29,6 +31,7 @@ class DiagnosisViewController: SectionedParseTableViewController {
         return query
     }
     
+    // when diagnosis selected, prepare the treatment view controller with the selected diagnosis
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "treatment" {
             let controller = segue.destinationViewController as! TreatmentViewController

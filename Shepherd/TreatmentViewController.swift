@@ -13,6 +13,7 @@ class TreatmentViewController: SectionedParseTableViewController{
     var diagnosis: PFObject!
     let availableSortOptions = ["Name", "Price"]
     
+    // setup variables for SectionedParseTableViewController
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.parseClassName = "Treatment"
@@ -20,6 +21,7 @@ class TreatmentViewController: SectionedParseTableViewController{
         self.sectionKey = "Category"
     }
     
+    // if diagnosis set, filter only to treatments related to it
     override func addSearchToQuery(query: PFQuery) -> PFQuery {
         if(self.diagnosis != nil){
             query.whereKey("Diagnosis", equalTo: self.diagnosis)
@@ -28,6 +30,7 @@ class TreatmentViewController: SectionedParseTableViewController{
         return query
     }
     
+    // custom formatting for cells in this view
     override func prepareCell(cell: UITableViewCell, object: PFObject) -> UITableViewCell {
         cell.textLabel?.text = object[self.textKey!] as! String!
         cell.detailTextLabel?.text = "$" + (object["Price"] as! Double).format(".2")
@@ -35,6 +38,7 @@ class TreatmentViewController: SectionedParseTableViewController{
         return cell
     }
     
+    // allows users to select how they would like to sort the treatment list
     @IBAction func sortList(sender: UIButton) {
         UIActionSheet.showInView(self.view, withTitle: "Select Sort Method", cancelButtonTitle: "Cancel", destructiveButtonTitle: nil,
             otherButtonTitles: self.availableSortOptions, tapBlock: {(actionSheet: UIActionSheet, buttonIndex: Int) in
@@ -43,6 +47,7 @@ class TreatmentViewController: SectionedParseTableViewController{
         })
     }
     
+    // when treatment selected, prepare prescription summary with the selected treatment
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "summary" {
             let controller = segue.destinationViewController as! PrescriptionSummaryViewController

@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDel
 
     var window: UIWindow?
 
+    // sets up the root view controller, tab bar, Parse settings, and notification settings
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         let tabBarController = self.window!.rootViewController as! UITabBarController

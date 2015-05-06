@@ -16,15 +16,18 @@ class PatientPlanViewController: UIViewController {
     
     var tableViewController: PatientPlanTableViewController = PatientPlanTableViewController()
     
+    // setup tableview delegate
     override func viewWillAppear(animated: Bool) {
         self.tableView.delegate = self.tableViewController
         self.tableView.dataSource = self.tableViewController
     }
     
+    // ensure UI is setup properly when shown
     override func viewDidAppear(animated: Bool) {
         self.updateUI()
     }
     
+    // update table and total cost tally
     func updateUI() {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.tableView.reloadData()
@@ -38,6 +41,7 @@ class PatientPlanViewController: UIViewController {
         })
     }
     
+    // construct email to export patient plan
     func constructShareText() -> String {
         var textToShare = "<html><body><p><h1>Patient Plan</h1></p>" +
         "<table style=\"border-collapse: collapse; border: 1px solid black\"><thead><tr>" +
@@ -69,6 +73,7 @@ class PatientPlanViewController: UIViewController {
         return textToShare
     }
     
+    // allow clear button to clear the patient plan
     @IBAction func clearButtonClicked(sender: UIButton) {
         let alertController = UIAlertController(title: "Clear Patient Plan?", message: "Cannot be undone.", preferredStyle: .Alert)
         
@@ -84,6 +89,7 @@ class PatientPlanViewController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    // allow user, upon clicking share button, to select how they would like to export the patient plan
     @IBAction func shareButtonClicked(sender: UIButton) {
         if PatientPlan.sharedInstance.isEmpty() {
             let alert = UIAlertView()
@@ -106,6 +112,7 @@ class PatientPlanViewController: UIViewController {
         self.presentViewController(activityVC, animated: true, completion: nil)
     }
     
+    // provide the backing to list the patient plan
     class PatientPlanTableViewController: UITableViewController, UITableViewDataSource {
         let cellId = "Cell"
         
