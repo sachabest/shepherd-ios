@@ -14,7 +14,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
     var parseClassName : String = ""
     var textKey: String!
     var sortKey: String!
-    var searchField: String = "canonicalName"
+    var searchField: String = "Name"
     var sectionKey: String!
     
     var searchTerm: String!
@@ -75,6 +75,7 @@ class SectionedParseTableViewController: UITableViewController, UITableViewDataS
             self.sections.removeAll(keepCapacity: true)
             
             for object in sourceObjects{
+                object.fetchIfNeeded()
                 var sectionName = object[self.sectionKey as String!] as! String!
                 var sectionList = self.sectionNames[sectionName] as Section?
                 

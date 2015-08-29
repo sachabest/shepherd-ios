@@ -33,8 +33,9 @@ class TreatmentViewController: SectionedParseTableViewController{
     // custom formatting for cells in this view
     override func prepareCell(cell: UITableViewCell, object: PFObject) -> UITableViewCell {
         cell.textLabel?.text = object[self.textKey!] as! String!
-        cell.detailTextLabel?.text = "$" + (object["Price"] as! Double).format(".2")
-        
+        if !(object["Price"] is NSNull) {
+            cell.detailTextLabel?.text = "$" + (object["Price"] as! Double).format(".2")
+        }
         return cell
     }
     

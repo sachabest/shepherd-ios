@@ -13,7 +13,7 @@ class PrescriptionSummaryViewController: UIViewController, UIPickerViewDataSourc
     @IBOutlet var prescriptionLabel: UILabel!
     @IBOutlet var picker: UIPickerView!
     @IBOutlet var quantityDisplay: UITextField!
-    
+    var treatment: PFObject!
     var variants: [PFObject]!
     
     var quantity: Int! {
@@ -62,9 +62,10 @@ class PrescriptionSummaryViewController: UIViewController, UIPickerViewDataSourc
         self.prescriptionLabel.text = self.prescription["Name"] as! String!
         self.quantity = 1
 
-        var relation = self.prescription["Prescriptions"] as! PFRelation!
-        if relation != nil {
-            var query: PFQuery! = relation.query()
+        var name = self.prescription["Name"] as! String!
+        if name != nil {
+            var query: PFQuery! = PFQuery(className: "Prescription")
+            query.whereKey("Treatment", equalTo: name)
             
             query.findObjectsInBackgroundWithBlock({(NSArray objects, NSError error) in
                 if let foundObjects = objects as? [PFObject] {
